@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>התקנת המסד FoodRush</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  ol.steps{padding-inline-start:22px} ol.steps li{margin:0 0 16px}
+  kbd{border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 6px;font-family:Calibri,Carlito,Consolas,monospace;background:#fff}
+  .ltr{direction:ltr;unicode-bidi:isolate}
+  .codeline{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px}
+  .codeline pre.sql{flex:1}
+  a.btn{display:inline-block;padding:8px 16px;border-radius:6px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600}
+  .note{color:var(--muted);font-size:.95rem;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap"><div class="crumbs"><a href="index.html">SQL עם FoodRush</a> › התקנת המסד</div></div></div>
+<main class="wrap">
+  <h1>התקנת המסד FoodRush</h1>
+  <p class="lead">צריך את הדף הזה רק אם המסד לא קיים במחשב. המחשבים בכיתה מתאפסים בכל לילה, ולכן בתחילת שיעור בדרך כלל מתקינים מחדש. זה לוקח פחות מדקה.</p>
+
+  <p class="note">איך יודעים אם המסד קיים? ב־SSMS, ברשימת המסדים בסרגל הכלים. אם FoodRush לא מופיע שם, מתקינים.</p>
+
+  <ol class="steps">
+    <li><a class="btn" href="foodrush_db.sql" download>הורדת הקובץ foodrush_db.sql</a></li>
+    <li>ב־SSMS: <span class="ltr">File → Open → File</span>, ובוחרים את הקובץ מתיקיית ההורדות (Downloads).</li>
+    <li>לוחצים <kbd>F5</kbd> ומחכים שבשורת המצב בתחתית החלון תופיע ההודעה <span class="ltr">Query executed successfully</span>.</li>
+    <li>פותחים חלון חדש עם <span class="ltr">New Query</span>, בוחרים FoodRush ברשימת המסדים, ובודקים שהכול עובד:
+      <div class="codeline"><pre class="sql" id="checkq"><span class="kw">SELECT</span> COUNT(*) <span class="kw">FROM</span> orders</pre>
+        <button type="button" id="copy">העתקה</button></div>
+      <div class="note">התשובה צריכה להיות 1250. אם מופיעה השגיאה <span class="ltr">Invalid object name 'orders'</span>, בוחרים FoodRush ברשימת המסדים בסרגל הכלים.</div>
+    </li>
+  </ol>
+  <p class="note">חשוב: את התרגילים כותבים בחלון החדש. לחיצה על <kbd>F5</kbd> בחלון של הקובץ תטען את כל המסד מחדש.</p>
+  <footer><a href="index.html">לכל הפרקים</a></footer>
+</main>
+<script>
+  document.getElementById("copy").addEventListener("click", async e => {
+    const t = "SELECT COUNT(*) FROM orders";
+    try { await navigator.clipboard.writeText(t); e.target.textContent = "הועתק"; }
+    catch (_) { e.target.textContent = "לא הועתק, סמנו והעתיקו ידנית"; }
+    setTimeout(() => e.target.textContent = "העתקה", 2000);
+  });
+</script>
+</body>
+</html>
