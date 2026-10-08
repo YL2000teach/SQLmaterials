@@ -1,0 +1,77 @@
+/* Shared styles for the whole course. Colours follow the slide deck. */
+:root{
+  --navy:#002060; --yellow:#FFC000; --cyan:#00B0F0;
+  --bg:#ffffff; --fg:#1d2433; --muted:#5b6475; --card:#f5f7fb; --line:#d9dee8;
+  --ok:#1a7f4b; --ok-bg:#e7f6ee; --bad:#b42318; --bad-bg:#fdecea;
+  --kw:#0000ff; --op:#808080; --str:#e00000;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:Calibri,Carlito,"Segoe UI",Arial,sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--navy)}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px 48px}
+
+/* top bar */
+.topbar{border-bottom:4px solid var(--yellow);background:#fff}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:10px;flex-wrap:wrap}
+.crumbs{font-size:.95rem;color:var(--muted)}
+.crumbs a{text-decoration:none;font-weight:600}
+.setup-link{font-size:.9rem;color:var(--muted)}
+.setup-link a{font-weight:600}
+
+h1{color:var(--navy);font-size:2rem;line-height:1.25;margin:28px 0 6px}
+h2{color:var(--navy);font-size:1.35rem;margin:32px 0 10px}
+.lead{color:var(--muted);margin:0 0 20px}
+
+/* cards / lists */
+.chapters{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.chapters a{display:flex;gap:14px;align-items:center;padding:12px 16px;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;text-decoration:none;color:var(--fg)}
+.chapters a:hover{border-color:var(--navy)}
+.chapters .num{flex:0 0 auto;width:2.2em;height:2.2em;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700}
+.chapters .t{font-weight:600}
+.chapters .meta{margin-inline-start:auto;color:var(--muted);font-size:.85rem;white-space:nowrap}
+
+.plist{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.plist a{display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;text-decoration:none;color:var(--fg);background:#fff}
+.plist a:hover{border-color:var(--navy)}
+.plist .count{color:var(--muted);font-size:.85rem;margin-inline-start:auto;white-space:nowrap}
+.empty{color:var(--muted);font-style:italic}
+
+.slides{position:relative;width:100%;aspect-ratio:16/9;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card)}
+.slides iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.slides .placeholder{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);padding:16px;text-align:center}
+
+/* questions */
+.q{border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:0 0 14px;background:#fff}
+.q-head{display:flex;gap:12px;align-items:flex-start}
+.q-num{flex:0 0 auto;min-width:1.9em;height:1.9em;border-radius:6px;background:var(--yellow);color:#000;font-weight:700;display:grid;place-items:center}
+.q-text{flex:1}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.row label{color:var(--muted);font-size:.95rem}
+input.ans{width:9em;font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:6px;direction:ltr;text-align:center}
+input.ans:focus{outline:2px solid var(--cyan);border-color:var(--cyan)}
+button{font:inherit;border-radius:6px;padding:6px 14px;cursor:pointer;border:1px solid var(--navy);background:var(--navy);color:#fff}
+button.ghost{background:#fff;color:var(--navy)}
+button:disabled{opacity:.45;cursor:not-allowed}
+.fb{font-weight:600;font-size:.95rem;padding:3px 10px;border-radius:6px}
+.fb.ok{color:var(--ok);background:var(--ok-bg)}
+.fb.bad{color:var(--bad);background:var(--bad-bg)}
+.hint,.sol{margin-top:12px;padding:10px 14px;border-radius:8px;background:var(--card);border:1px solid var(--line)}
+.sol .note{margin-top:8px;color:var(--fg)}
+.hidden{display:none}
+
+/* code */
+code{direction:ltr;unicode-bidi:isolate;display:inline-block;white-space:nowrap;line-height:1.35;font-family:Calibri,Carlito,Consolas,monospace;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:0 5px}
+pre.sql{direction:ltr;text-align:left;margin:0;padding:10px 14px;background:#fff;border:1px solid #9e9e9e;border-radius:4px;
+  font-family:Calibri,Carlito,Consolas,monospace;font-size:1.05rem;line-height:1.45;white-space:pre-wrap}
+pre.sql .kw{color:var(--kw)} pre.sql .op{color:var(--op)} pre.sql .str{color:var(--str)}
+
+.score{margin:18px 0;padding:10px 14px;border-radius:8px;background:var(--card);border-inline-start:4px solid var(--navy)}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem}
+
+@media (max-width:600px){
+  body{font-size:17px}
+  h1{font-size:1.6rem}
+  .chapters .meta{display:none}
+}
