@@ -75,3 +75,24 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem}
   h1{font-size:1.6rem}
   .chapters .meta{display:none}
 }
+
+/* independent practice */
+.howto{padding:12px 16px;border-radius:8px;background:#fff8e0;border-inline-start:4px solid var(--yellow);margin:0 0 18px}
+label.fld{display:block;margin-top:12px;color:var(--muted);font-size:.95rem}
+label.fld textarea,label.fld input{display:block;width:100%;margin-top:4px;font:inherit;color:var(--fg);padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:#fff}
+label.fld textarea:focus,label.fld input:focus{outline:2px solid var(--cyan);border-color:var(--cyan)}
+textarea.sqlbox{font-family:Calibri,Carlito,Consolas,monospace;text-align:left}
+label.name{max-width:420px;margin:0 0 18px}
+.submit{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:20px 0}
+.q-title{font-weight:700;color:var(--navy);margin-bottom:4px}
+.q-part{margin:0 0 6px}
+
+/* extras page */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.toc a{padding:4px 10px;border:1px solid var(--line);border-radius:6px;text-decoration:none;font-size:.9rem;background:var(--card)}
+.xch h2{border-bottom:2px solid var(--yellow);padding-bottom:4px;scroll-margin-top:12px}
+.extras-link{margin-top:18px;font-weight:600}
+
+/* long inline code: scroll inside instead of widening the page */
+code{max-width:100%;overflow-x:auto;vertical-align:bottom}
+.q-text{min-width:0}
