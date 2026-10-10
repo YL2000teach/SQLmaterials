@@ -42,13 +42,13 @@ window.COURSE = {
     {
       "n": 1,
       "title": "פתיחה, מסד נתונים וסביבת עבודה",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p9",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h164370b0e4373f29_0_0",
       "practices": []
     },
     {
       "n": 2,
       "title": "SELECT ו־FROM",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p22",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h3d3d73592439c8a8_1_8",
       "practices": [
         {
           "id": "2-1",
@@ -161,7 +161,7 @@ window.COURSE = {
     {
       "n": 3,
       "title": "עמודות מחושבות וכינויים",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p31",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h3d3d73592439c8a8_1_111",
       "practices": [
         {
           "id": "3-1",
@@ -289,7 +289,7 @@ window.COURSE = {
     {
       "n": 4,
       "title": "DISTINCT",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p41",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h3d3d73592439c8a8_1_195",
       "practices": [
         {
           "id": "4-1",
@@ -399,7 +399,7 @@ window.COURSE = {
     {
       "n": 5,
       "title": "WHERE",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p46",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h16075b42f38d69e2_0_0",
       "practices": [
         {
           "id": "5-1",
@@ -549,7 +549,7 @@ window.COURSE = {
     {
       "n": 6,
       "title": "כמה תנאים ביחד: AND, OR, NOT",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p60",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h16075b42f38d69e2_0_177",
       "practices": [
         {
           "id": "6-1",
@@ -730,7 +730,7 @@ window.COURSE = {
     {
       "n": 7,
       "title": "קיצורי דרך: IN, BETWEEN, LIKE",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p69",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_14_0",
       "practices": [
         {
           "id": "7-1",
@@ -928,7 +928,7 @@ window.COURSE = {
     {
       "n": 8,
       "title": "מיון ודירוג: ORDER BY, TOP",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p78",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_14_95",
       "practices": [
         {
           "id": "8-1",
@@ -1114,7 +1114,7 @@ window.COURSE = {
     {
       "n": 9,
       "title": "פונקציות: סוגרים חשבונות פתוחים",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p89",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_17_0",
       "practices": [
         {
           "id": "9-1",
@@ -1290,7 +1290,7 @@ window.COURSE = {
     {
       "n": 10,
       "title": "תאריכים",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p104",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_17_101",
       "practices": [
         {
           "id": "10-1",
@@ -1469,7 +1469,7 @@ window.COURSE = {
     {
       "n": 11,
       "title": "CASE",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p109",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_17_178",
       "practices": [
         {
           "id": "11-1",
@@ -1651,7 +1651,7 @@ window.COURSE = {
     {
       "n": 12,
       "title": "פונקציות סיכום",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p116",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_17_256",
       "practices": [
         {
           "id": "12-1",
@@ -1849,7 +1849,7 @@ window.COURSE = {
     {
       "n": 13,
       "title": "GROUP BY",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p124",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_19_0",
       "practices": [
         {
           "id": "13-1",
@@ -2048,7 +2048,7 @@ window.COURSE = {
     {
       "n": 14,
       "title": "HAVING",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p134",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_19_99",
       "practices": [
         {
           "id": "14-1",
@@ -2206,7 +2206,7 @@ window.COURSE = {
     {
       "n": 15,
       "title": "JOIN",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p141",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_19_177",
       "practices": [
         {
           "id": "15-1",
@@ -2361,7 +2361,7 @@ window.COURSE = {
     {
       "n": 16,
       "title": "LEFT JOIN ו־self join",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p158",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_19_279",
       "practices": [
         {
           "id": "16-1",
@@ -2462,7 +2462,7 @@ window.COURSE = {
     {
       "n": 17,
       "title": "תתי־שאילתות",
-      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.p168",
+      "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_19_385",
       "practices": [
         {
           "id": "17-1",
