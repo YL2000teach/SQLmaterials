@@ -25,6 +25,7 @@
       <div class="setup-link">המסד FoodRush לא מותקן במחשב? <a href="${C.setupPage}" target="_blank" rel="noopener">להתקנה</a>${C.schemaPage ? ` · <a href="${C.schemaPage}" target="_blank" rel="noopener">מבנה המסד</a>` : ""}</div>
     </div></div>`;
   }
+  const colTip = () => `<div class="howto coltip"><b>לפני שמתחילים:</b> לא בטוחים אילו עמודות יש בטבלה? הריצו קודם <code>SELECT * FROM</code> ואחריו שם הטבלה, ובדקו את שמות העמודות בשורה העליונה של התוצאה.${C.schemaPage ? ` אפשר גם להיעזר בעמוד <a href="${C.schemaPage}" target="_blank" rel="noopener">מבנה המסד</a>.` : ""}</div>`;
   const home = `<a href="index.html">${esc(C.title)}</a>`;
   const findChapter = n => C.chapters.find(c => c.n === n);
   function findPractice(id) {
@@ -88,8 +89,9 @@
       <section class="q" data-i="${i}">
         <div class="q-head"><span class="q-num">${i + 1}</span><div class="q-text">${rich(q.q)}</div></div>
         <div class="row">${open(q) ? "" : `
-          <label for="${pfx}a${i}">${esc(q.label || "התשובה שקיבלתם")}${q.unit ? " (" + esc(q.unit) + ")" : ""}:</label>
-          <input class="ans" id="${pfx}a${i}" autocomplete="off">
+          ${q.fields ? q.fields.map((f, j) => `<span class="pair"><label for="${pfx}a${i}_${j}">${esc(f)}${q.unit ? " (" + esc(q.unit) + ")" : ""}:</label>
+          <input class="ans part" id="${pfx}a${i}_${j}" autocomplete="off" dir="ltr"></span>`).join("") : `<label for="${pfx}a${i}">${esc(q.label || "התשובה שקיבלתם")}${q.unit ? " (" + esc(q.unit) + ")" : ""}:</label>
+          <input class="ans" id="${pfx}a${i}" autocomplete="off">`}
           <button class="check">בדיקה</button>`}
           ${q.hint ? `<button class="ghost show-hint">רמז</button>` : ""}
           <button class="ghost show-sol" ${open(q) ? "" : "disabled"} title="אפשר לראות את הפתרון אחרי ניסיון אחד">${open(q) ? "תשובה" : "פתרון"}</button>
@@ -105,8 +107,10 @@
     root.querySelectorAll(".q").forEach(el => {
       const i = Number(el.dataset.i), q = questions[i];
       const input = el.querySelector(".ans"), fb = el.querySelector(".fb"), solBtn = el.querySelector(".show-sol");
+      const parts = [...el.querySelectorAll(".ans")];
+      const value = () => parts.length > 1 ? (parts.every(x => x.value.trim() === "") ? "" : parts.map(x => x.value.trim() || "x").join(" ")) : input.value;
       const check = () => {
-        const r = isCorrect(input.value, q.answer);
+        const r = isCorrect(value(), q.answer);
         if (r === null) { fb.className = "fb"; fb.textContent = ""; return; }
         solBtn.disabled = false;
         if (r) { fb.className = "fb ok"; fb.textContent = "נכון"; solved.add(i); }
@@ -115,7 +119,7 @@
       };
       if (input) {
         el.querySelector(".check").addEventListener("click", check);
-        input.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
+        parts.forEach(x => x.addEventListener("keydown", e => { if (e.key === "Enter") check(); }));
       }
       const hb = el.querySelector(".show-hint");
       if (hb) hb.addEventListener("click", () => el.querySelector(".hint").classList.toggle("hidden"));
@@ -129,7 +133,7 @@
     document.title = `${p.title} | פרק ${ch.n}`;
     if (p.kind === "self") return renderSelf(ch, p);
     $("#app").innerHTML = topbar(`${home} › <a href="chapter.html?ch=${ch.n}">פרק ${ch.n}</a> › ${esc(KINDS[p.kind] || "")}`) + `<main class="wrap">
-      <h1>${esc(p.title)}</h1>${p.intro ? `<p class="lead">${rich(p.intro)}</p>` : ""}
+      <h1>${esc(p.title)}</h1>${p.intro ? `<p class="lead">${rich(p.intro)}</p>` : ""}${colTip()}
       ${questionsHTML(p.questions, "")}
       ${p.questions.some(q => !open(q)) ? `<div class="score" id="score">ענית נכון על 0 מתוך ${p.questions.filter(q => !open(q)).length}</div>` : ""}
       <footer><a href="chapter.html?ch=${ch.n}">חזרה לפרק ${ch.n}</a></footer></main>`;
@@ -142,7 +146,7 @@
     document.title = `${label} | ${C.title}`;
     const chs = C.chapters.filter(ch => ch.extras && ch.extras.length);
     $("#app").innerHTML = topbar(`${home} › ${esc(label)}`) + `<main class="wrap">
-      <h1>${esc(label)}</h1><p class="lead">תרגילים נוספים לכל פרק, למי שרוצה עוד תרגול. לא חובה.</p>
+      <h1>${esc(label)}</h1><p class="lead">תרגילים נוספים לכל פרק, למי שרוצה עוד תרגול. לא חובה.</p>${colTip()}
       <nav class="toc">${chs.map(ch => `<a href="#ch${ch.n}">פרק ${ch.n}</a>`).join("")}</nav>
       ${chs.map(ch => `<div class="xch" id="ch${ch.n}" data-n="${ch.n}"><h2>פרק ${ch.n}: ${esc(ch.title)}</h2>${questionsHTML(ch.extras, "c" + ch.n + "_")}</div>`).join("")}
       <footer><a href="index.html">לכל הפרקים</a></footer></main>`;
@@ -169,14 +173,15 @@
         ${q.hint ? `<div class="hint">${rich(q.hint)}</div>` : ""}
         <label class="fld">השאילתה שכתבתם<textarea class="sqlbox" data-f="q${i}" rows="4" dir="ltr" spellcheck="false"></textarea></label>
         <label class="fld">התשובה במילים<textarea class="txtbox" data-f="t${i}" rows="2"></textarea></label>
-        ${open(q) ? "" : `<div class="row">
-          <label for="a${i}">בדיקה עצמית${q.label ? ": " + esc(q.label) : ""}:</label>
-          <input class="ans" id="a${i}" autocomplete="off"><button class="check ghost">בדיקה</button>
+        ${open(q) ? "" : `<div class="row"><span class="selfcheck">בדיקה עצמית:</span>
+          ${q.fields ? q.fields.map((f, j) => `<span class="pair"><label for="a${i}_${j}">${esc(f)}:</label>
+          <input class="ans part" id="a${i}_${j}" autocomplete="off" dir="ltr"></span>`).join("") : `<label for="a${i}">${q.label ? esc(q.label) : "התשובה"}:</label>
+          <input class="ans" id="a${i}" autocomplete="off">`}<button class="check ghost">בדיקה</button>
           <span class="fb" role="status" aria-live="polite"></span></div>`}
         ${teacher && q.solution ? `<div class="sol"><pre class="sql">${sql(q.solution)}</pre>${q.note ? `<div class="note">${rich(q.note)}</div>` : ""}</div>` : ""}
       </section>`).join("");
     $("#app").innerHTML = topbar(`${home} › <a href="chapter.html?ch=${ch.n}">פרק ${ch.n}</a> › ${esc(KINDS.self)}`) + `<main class="wrap">
-      <h1>${esc(p.title)}</h1>${p.intro ? `<p class="lead">${rich(p.intro)}</p>` : ""}
+      <h1>${esc(p.title)}</h1>${p.intro ? `<p class="lead">${rich(p.intro)}</p>` : ""}${colTip()}
       <div class="howto"><b>איך מגישים:</b> לכל שאלה כותבים את השאילתה ב־SSMS, מעתיקים אותה לתיבה, וכותבים תשובה במילים.
         בסוף לוחצים "העתקת כל התשובות", ומדביקים במטלה ב־Classroom.</div>
       <label class="fld name">שם מלא<input class="txtbox" data-f="name" autocomplete="name"></label>
@@ -192,14 +197,16 @@
       const q = p.questions[Number(el.dataset.i)], input = el.querySelector(".ans");
       if (!input) return;
       const fb = el.querySelector(".fb");
+      const parts = [...el.querySelectorAll(".ans")];
+      const value = () => parts.length > 1 ? (parts.every(x => x.value.trim() === "") ? "" : parts.map(x => x.value.trim() || "x").join(" ")) : input.value;
       const check = () => {
-        const r = isCorrect(input.value, q.answer);
+        const r = isCorrect(value(), q.answer);
         if (r === null) { fb.className = "fb"; fb.textContent = ""; return; }
         fb.className = r ? "fb ok" : "fb bad";
         fb.textContent = r ? "נכון" : "לא בדיוק. בדקו את השאילתה";
       };
       el.querySelector(".check").addEventListener("click", check);
-      input.addEventListener("keydown", e => { if (e.key === "Enter") check(); });
+      parts.forEach(x => x.addEventListener("keydown", e => { if (e.key === "Enter") check(); }));
     });
     $("#copyall").addEventListener("click", async () => {
       const v = f => (document.querySelector(`[data-f="${f}"]`).value || "").trim();

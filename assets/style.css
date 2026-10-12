@@ -106,3 +106,10 @@ code{max-width:100%;overflow-x:auto;vertical-align:bottom}
 .schema-view{overflow:auto;margin:0 auto 48px;padding:12px;max-width:100vw;height:80vh;border-top:1px solid #e3e6ec;border-bottom:1px solid #e3e6ec;direction:ltr;background:#fff}
 .schema-view img{display:block;max-width:none;height:auto}
 @media print{.topbar,.schema-tools,.schema-legend,h1{display:none}.schema-view{height:auto;overflow:visible;border:0;padding:0}.schema-view img{width:100%!important}}
+
+.ans.part{width:5.5em}
+
+.selfcheck{font-weight:600}
+.pair{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.coltip{margin-bottom:16px}
+.coltip code{direction:ltr;unicode-bidi:isolate}
