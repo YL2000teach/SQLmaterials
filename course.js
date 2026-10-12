@@ -43,12 +43,20 @@ window.COURSE = {
       "n": 1,
       "title": "פתיחה, מסד נתונים וסביבת עבודה",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h164370b0e4373f29_0_0",
+      "deckPages": [
+        2,
+        14
+      ],
       "practices": []
     },
     {
       "n": 2,
       "title": "SELECT ו־FROM",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h3d3d73592439c8a8_1_8",
+      "deckPages": [
+        15,
+        23
+      ],
       "practices": [
         {
           "id": "2-1",
@@ -73,7 +81,7 @@ window.COURSE = {
               "note": "couriers: 25, cities: 13, cuisines: 11."
             },
             {
-              "q": "הציגו את שם המנה ואת המחיר, כשהשם מופיע ראשון.",
+              "q": "הציגו את שם המנה ואת המחיר, כשהשם מופיע ראשון. (טבלה: `menu_items`)",
               "answer": 207,
               "unit": "שורות",
               "solution": "SELECT item_name, price\nFROM menu_items"
@@ -162,6 +170,10 @@ window.COURSE = {
       "n": 3,
       "title": "עמודות מחושבות וכינויים",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h3d3d73592439c8a8_1_111",
+      "deckPages": [
+        24,
+        33
+      ],
       "practices": [
         {
           "id": "3-1",
@@ -176,7 +188,7 @@ window.COURSE = {
               "solution": "SELECT courier_id,\n       'Courier name is ' + first_name + ' ' + last_name AS courier_name\nFROM couriers"
             },
             {
-              "q": "זמן הכנה כפול: בשישי בערב המטבח עמוס. הציגו לכל מסעדה את זמן ההכנה הרגיל, ואת זמן ההכנה כפול 1.5",
+              "q": "זמן הכנה כפול: בשישי בערב המטבח עמוס. הציגו לכל מסעדה את זמן ההכנה הרגיל, ואת זמן ההכנה כפול 1.5 (טבלה: `restaurants`)",
               "answer": 30,
               "unit": "שורות",
               "solution": "SELECT restaurant_name,\n       avg_prep_minutes,\n       avg_prep_minutes * 1.5 AS friday_prep_minutes\nFROM restaurants"
@@ -290,6 +302,10 @@ window.COURSE = {
       "n": 4,
       "title": "DISTINCT",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h3d3d73592439c8a8_1_195",
+      "deckPages": [
+        34,
+        38
+      ],
       "practices": [
         {
           "id": "4-1",
@@ -317,7 +333,7 @@ window.COURSE = {
               "note": "אותו מספר כמו בסעיף הקודם. customer_id הוא המפתח הראשי, ולכן כל ערך מופיע בו פעם אחת גם בלי DISTINCT."
             },
             {
-              "q": "כמה שילובים של מסעדה וסטטוס הזמנה קיימים?",
+              "q": "כמה שילובים של מסעדה וסטטוס הזמנה קיימים? (טבלה: `orders`)",
               "answer": 85,
               "unit": "שורות",
               "solution": "SELECT DISTINCT restaurant_id, order_status\nFROM orders"
@@ -400,6 +416,10 @@ window.COURSE = {
       "n": 5,
       "title": "WHERE",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h16075b42f38d69e2_0_0",
+      "deckPages": [
+        39,
+        52
+      ],
       "practices": [
         {
           "id": "5-1",
@@ -408,20 +428,20 @@ window.COURSE = {
           "intro": "כל בקשה היא שאילתה אחת עם תנאי אחד.",
           "questions": [
             {
-              "q": "רכזת השליחים: \"אילו שליחים נוסעים ברכב?\" (`vehicle_type`)",
+              "q": "רכזת השליחים: \"אילו שליחים נוסעים ברכב?\" (`vehicle_type`) (טבלה: `couriers`)",
               "answer": 4,
               "unit": "שורות",
               "solution": "SELECT *\nFROM couriers\nWHERE vehicle_type = 'Car'"
             },
             {
-              "q": "הכספים: \"באילו הזמנות השליח לא קיבל טיפ?\" אחר כך הריצו גם `WHERE tip IS NULL`. למה התשובות שונות?",
+              "q": "הכספים: \"באילו הזמנות השליח לא קיבל טיפ?\" אחר כך הריצו גם `WHERE tip IS NULL`. למה התשובות שונות? (טבלה: `orders`)",
               "answer": 381,
               "unit": "שורות",
               "solution": "SELECT *\nFROM orders\nWHERE tip = 0",
               "note": "WHERE tip IS NULL מחזיר 179. טיפ 0 הוא משלוח שנמסר בלי טיפ. NULL הוא הזמנה שלא היה בה משלוח."
             },
             {
-              "q": "שליח מספר 7 טוען שביצע יותר משלושים משלוחים. האם הוא צודק? (`courier_id`)",
+              "q": "שליח מספר 7 טוען שביצע יותר משלושים משלוחים. האם הוא צודק? (`courier_id`) (טבלה: `orders`)",
               "answer": 36,
               "unit": "שורות",
               "label": "כמה משלוחים יש לו",
@@ -429,7 +449,7 @@ window.COURSE = {
               "note": "הוא צודק: 36."
             },
             {
-              "q": "משאבי אנוש: \"לאילו שליחים אין אחראי מעליהם?\" מי הם לדעתכם? (`supervisor_id`)",
+              "q": "משאבי אנוש: \"לאילו שליחים אין אחראי מעליהם?\" מי הם לדעתכם? (`supervisor_id`) (טבלה: `couriers`)",
               "answer": 3,
               "unit": "שורות",
               "solution": "SELECT *\nFROM couriers\nWHERE supervisor_id IS NULL",
@@ -550,6 +570,10 @@ window.COURSE = {
       "n": 6,
       "title": "כמה תנאים ביחד: AND, OR, NOT",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h16075b42f38d69e2_0_177",
+      "deckPages": [
+        53,
+        61
+      ],
       "practices": [
         {
           "id": "6-1",
@@ -558,13 +582,13 @@ window.COURSE = {
           "intro": "כל בקשה דורשת שניים או שלושה תנאים. לפני שכותבים: האם צריך סוגריים?",
           "questions": [
             {
-              "q": "מנהל Shuk Kitchen: \"כמה הזמנות היו לי מאז תחילת 2026?\" (`restaurant_id = 1`)",
+              "q": "מנהל Shuk Kitchen: \"כמה הזמנות היו לי מאז תחילת 2026?\" (`restaurant_id = 1`) (טבלה: `orders`)",
               "answer": 14,
               "unit": "שורות",
               "solution": "SELECT *\nFROM orders\nWHERE restaurant_id = 1\n  AND order_date >= '20260101'"
             },
             {
-              "q": "מנהלת התפעול: \"אילו מסעדות בתל אביב (`city_id = 1`) או בירושלים (`city_id = 4`) מכינות את האוכל ביותר מ־18 דקות בממוצע (`avg_prep_minutes`)?\"",
+              "q": "מנהלת התפעול: \"אילו מסעדות בתל אביב (`city_id = 1`) או בירושלים (`city_id = 4`) מכינות את האוכל ביותר מ־18 דקות בממוצע (`avg_prep_minutes`)?\" (טבלה: `restaurants`)",
               "answer": 4,
               "unit": "שורות",
               "hint": "AND ו־OR באותה שאילתה.",
@@ -572,7 +596,7 @@ window.COURSE = {
               "note": "בלי סוגריים מתקבלות 5 שורות: נוספת מסעדה בירושלים שמכינה מהר יותר."
             },
             {
-              "q": "הכספים: \"באילו הזמנות השתמשו בקופון, וההזמנה לא בוטלה?\"",
+              "q": "הכספים: \"באילו הזמנות השתמשו בקופון, וההזמנה לא בוטלה?\" (טבלה: `orders`)",
               "answer": 249,
               "unit": "שורות",
               "hint": "NOT לפני כל אחד משני התנאים: הקופון לא ריק, והסטטוס לא Cancelled.",
@@ -580,7 +604,7 @@ window.COURSE = {
               "note": "גם coupon_id IS NOT NULL AND order_status <> 'Cancelled' נכון, ומחזיר 249."
             },
             {
-              "q": "צוות המשמרות: \"כמה הזמנות נכנסו אחרי 22:00 או לפני 12:00?\"",
+              "q": "צוות המשמרות: \"כמה הזמנות נכנסו אחרי 22:00 או לפני 12:00?\" (טבלה: `orders`)",
               "answer": 196,
               "unit": "שורות",
               "solution": "SELECT *\nFROM orders\nWHERE order_time >= '22:00'\n   OR order_time < '12:00'"
@@ -731,6 +755,10 @@ window.COURSE = {
       "n": 7,
       "title": "קיצורי דרך: IN, BETWEEN, LIKE",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_14_0",
+      "deckPages": [
+        62,
+        70
+      ],
       "practices": [
         {
           "id": "7-1",
@@ -739,14 +767,14 @@ window.COURSE = {
           "intro": "לכל בקשה כלי אחד מהפרק: IN, BETWEEN או LIKE, לפעמים עם NOT. כתבו את השאילתה ב־SSMS והקלידו כאן כמה שורות קיבלתם.",
           "questions": [
             {
-              "q": "הכספים: \"כמה הזמנות שולמו בביט או Apple Pay?\" (`payment_method_id = 2`, `payment_method_id = 4`)",
+              "q": "הכספים: \"כמה הזמנות שולמו בביט או Apple Pay?\" (`payment_method_id = 2`, `payment_method_id = 4`) (טבלה: `orders`)",
               "answer": 498,
               "unit": "שורות",
               "hint": "רשימה של שני ערכים בעמודה אחת.",
               "solution": "SELECT *\nFROM orders\nWHERE payment_method_id IN (2, 4)"
             },
             {
-              "q": "הכספים: \"בכמה הזמנות לא השתמשו באחד מקופוני הקיץ (`coupon_id` 2 או 3)?\" האם התשובה כוללת הזמנות בלי קופון?",
+              "q": "הכספים: \"בכמה הזמנות לא השתמשו באחד מקופוני הקיץ (`coupon_id` 2 או 3)?\" האם התשובה כוללת הזמנות בלי קופון? (טבלה: `orders`)",
               "answer": 240,
               "unit": "שורות",
               "hint": "NOT IN.",
@@ -754,13 +782,13 @@ window.COURSE = {
               "note": "240 לא כולל 991 הזמנות שבהן coupon_id ריק. כדי לכלול אותן מוסיפים OR coupon_id IS NULL ומקבלים 1231."
             },
             {
-              "q": "מנהלת התפעול: \"כמה משלוחים לקחו בין 30 ל־45 דקות?\"",
+              "q": "מנהלת התפעול: \"כמה משלוחים לקחו בין 30 ל־45 דקות?\" (טבלה: `orders`)",
               "answer": 558,
               "unit": "שורות",
               "solution": "SELECT *\nFROM orders\nWHERE delivery_minutes BETWEEN 30 AND 45"
             },
             {
-              "q": "צוות האפליקציה: \"אילו סלטים יש בתפריט?\" (כל מנה שבשם שלה מופיעה המילה Salad)",
+              "q": "צוות האפליקציה: \"אילו סלטים יש בתפריט?\" (כל מנה שבשם שלה מופיעה המילה Salad) (טבלה: `menu_items`)",
               "answer": 13,
               "unit": "שורות",
               "solution": "SELECT *\nFROM menu_items\nWHERE item_name LIKE '%Salad%'"
@@ -929,6 +957,10 @@ window.COURSE = {
       "n": 8,
       "title": "מיון ודירוג: ORDER BY, TOP",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_14_95",
+      "deckPages": [
+        71,
+        81
+      ],
       "practices": [
         {
           "id": "8-1",
@@ -937,7 +969,7 @@ window.COURSE = {
           "intro": "לכל בקשה: מיון, ולפעמים TOP. לפני שכותבים: מה קורה בתיקו?",
           "questions": [
             {
-              "q": "מנהלת התפעול: \"מה חמשת המשלוחים הארוכים ביותר?\"",
+              "q": "מנהלת התפעול: \"מה חמשת המשלוחים הארוכים ביותר?\" (טבלה: `orders`)",
               "answer": 159,
               "label": "מספר ההזמנה בשורה הראשונה",
               "hint": "העמודה delivery_minutes.",
@@ -945,7 +977,7 @@ window.COURSE = {
               "note": "הראשון: הזמנה 159, 69 דקות. המשלוח החמישי והשישי באורכם הם שניהם 61 דקות (הזמנות 260 ו־404). TOP 5 חותך אחד מהם. עם WITH TIES מתקבלות 6 שורות."
             },
             {
-              "q": "הכספים: \"תראו לי את כל ההזמנות שקיבלו את הטיפ הגבוה ביותר.\" כמה הזמנות כאלה יש?",
+              "q": "הכספים: \"תראו לי את כל ההזמנות שקיבלו את הטיפ הגבוה ביותר.\" כמה הזמנות כאלה יש? (טבלה: `orders`)",
               "answer": 122,
               "unit": "שורות",
               "hint": "כמה הזמנות קיבלו את הטיפ הגבוה ביותר? אולי יותר מאחת.",
@@ -953,14 +985,14 @@ window.COURSE = {
               "note": "122 הזמנות, כולן עם טיפ 20.00. בלי WITH TIES, TOP 10 מחזיר עשר הזמנות כלשהן מתוך 122. \"הכי גבוה\" לא תמיד אומר שורה אחת."
             },
             {
-              "q": "המנהל של Nonna Rina (מסעדה 2): \"חמש ההזמנות האחרונות שלי, מהחדשה לישנה.\"",
+              "q": "המנהל של Nonna Rina (מסעדה 2): \"חמש ההזמנות האחרונות שלי, מהחדשה לישנה.\" (טבלה: `orders`)",
               "answer": 39,
               "label": "מספר ההזמנה בשורה הראשונה",
               "solution": "SELECT TOP 5 order_id, order_date, order_time\nFROM orders\nWHERE restaurant_id = 2\nORDER BY order_date DESC, order_time DESC",
               "note": "הראשונה: הזמנה 39, 2026-06-24. להזמנות 87 ו־18 אותו תאריך, 2026-05-08. בלי order_time במיון, הסדר ביניהן לא מובטח."
             },
             {
-              "q": "משאבי אנוש: \"רשימת השליחים לפי ותק, מהוותיק לחדש.\"",
+              "q": "משאבי אנוש: \"רשימת השליחים לפי ותק, מהוותיק לחדש.\" (טבלה: `couriers`)",
               "answer": 2,
               "label": "מספר השליח בשורה הראשונה",
               "hint": "העמודה hire_date.",
@@ -1115,6 +1147,10 @@ window.COURSE = {
       "n": 9,
       "title": "פונקציות: סוגרים חשבונות פתוחים",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_17_0",
+      "deckPages": [
+        82,
+        96
+      ],
       "practices": [
         {
           "id": "9-1",
@@ -1123,14 +1159,14 @@ window.COURSE = {
           "intro": "לכל בקשה פונקציה אחת או שתיים מהפרק. כתבו את השאילתה ב־SSMS והקלידו כאן כמה שורות קיבלתם.",
           "questions": [
             {
-              "q": "מערכת ה־SMS: \"אני צריכה מספרי טלפון בלי מקף, רק ללקוחות שיש להם טלפון.\"",
+              "q": "מערכת ה־SMS: \"אני צריכה מספרי טלפון בלי מקף, רק ללקוחות שיש להם טלפון.\" (טבלה: `customers`)",
               "answer": 145,
               "unit": "שורות",
               "solution": "SELECT customer_id,\n       REPLACE(phone, '-', '') AS sms_phone\nFROM customers\nWHERE phone IS NOT NULL",
               "note": "בלי ה־WHERE מתקבלות 160 שורות, ו־15 מהן NULL. REPLACE על NULL מחזיר NULL."
             },
             {
-              "q": "מוקד השירות: \"לכל הזמנה, תווית בפורמט `order 6: Picked Up`.\"",
+              "q": "מוקד השירות: \"לכל הזמנה, תווית בפורמט `order 6: Picked Up`.\" (טבלה: `orders`)",
               "answer": 1250,
               "unit": "שורות",
               "hint": "order_id הוא מספר. איזו פונקציה מחברת טקסט ומספר בלי שגיאה?",
@@ -1138,14 +1174,14 @@ window.COURSE = {
               "note": "CONCAT חוסך את ה־CAST. גם זה נכון: 'order ' + CAST(order_id AS VARCHAR(10)) + ': ' + order_status."
             },
             {
-              "q": "העיצוב: \"לאילו לקוחות יש שם משפחה ארוך מ־6 תווים?\"",
+              "q": "העיצוב: \"לאילו לקוחות יש שם משפחה ארוך מ־6 תווים?\" (טבלה: `customers`)",
               "answer": 42,
               "unit": "שורות",
               "hint": "העמודה last_name.",
               "solution": "SELECT customer_id, first_name, last_name\nFROM customers\nWHERE LEN(last_name) > 6"
             },
             {
-              "q": "מנהלת התפעול: \"זמן המשלוח בשעות, עם שתי ספרות אחרי הנקודה, רק להזמנות שנמסרו.\"",
+              "q": "מנהלת התפעול: \"זמן המשלוח בשעות, עם שתי ספרות אחרי הנקודה, רק להזמנות שנמסרו.\" (טבלה: `orders`)",
               "answer": 1071,
               "unit": "שורות",
               "hint": "60 או 60.0? זוכרים מה קרה בפרק 3?",
@@ -1291,6 +1327,10 @@ window.COURSE = {
       "n": 10,
       "title": "תאריכים",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_17_101",
+      "deckPages": [
+        97,
+        101
+      ],
       "practices": [
         {
           "id": "10-1",
@@ -1299,28 +1339,28 @@ window.COURSE = {
           "intro": "בכל החישובים השתמשו בתאריך סוף הנתונים, '20260630', ולא בתאריך של היום.",
           "questions": [
             {
-              "q": "הנהלת החברה: \"כמה הזמנות היו במרץ 2026?\"",
+              "q": "הנהלת החברה: \"כמה הזמנות היו במרץ 2026?\" (טבלה: `orders`)",
               "answer": 83,
               "unit": "שורות",
               "solution": "SELECT order_id, order_date\nFROM orders\nWHERE YEAR(order_date) = 2026\n  AND MONTH(order_date) = 3",
               "note": "מי שכותב רק MONTH(order_date) = 3 יקבל 140: מרץ 2025 ומרץ 2026 יחד."
             },
             {
-              "q": "מנהל המשמרות: \"כמה הזמנות היו בימי שני?\"",
+              "q": "מנהל המשמרות: \"כמה הזמנות היו בימי שני?\" (טבלה: `orders`)",
               "answer": 178,
               "unit": "שורות",
               "solution": "SELECT order_id, order_date\nFROM orders\nWHERE DATENAME(WEEKDAY, order_date) = 'Monday'",
               "note": "התשובה תלויה בשפת השרת. בשרת בשפה אחרת 'Monday' יחזיר 0 שורות, בלי שגיאה."
             },
             {
-              "q": "הכספים: \"כמה ימים כל קופון בתוקף?\" (`valid_from`, `valid_to`) כמה ימים יצאו ל־HANUKKAH10?",
+              "q": "הכספים: \"כמה ימים כל קופון בתוקף?\" (`valid_from`, `valid_to`) כמה ימים יצאו ל־HANUKKAH10? (טבלה: `coupons`)",
               "answer": 8,
               "label": "הערך שקיבלתם ל־HANUKKAH10",
               "solution": "SELECT coupon_code,\n       DATEDIFF(DAY, valid_from, valid_to) AS valid_days\nFROM coupons",
               "note": "8 שורות. DATEDIFF ב־DAY סופר חצות. HANUKKAH10 בתוקף מ־14 עד 22 בדצמבר, כלומר 9 ימים בלוח, ו־DATEDIFF מחזיר 8. איזו תשובה נכונה עסקית?"
             },
             {
-              "q": "מנהלת התפעול: \"אילו הזמנות היו בשבוע האחרון של הנתונים, מ־23 ביוני 2026?\" השתמשו ב־DATEADD.",
+              "q": "מנהלת התפעול: \"אילו הזמנות היו בשבוע האחרון של הנתונים, מ־23 ביוני 2026?\" השתמשו ב־DATEADD. (טבלה: `orders`)",
               "answer": 20,
               "unit": "שורות",
               "solution": "SELECT order_id, order_date\nFROM orders\nWHERE order_date >= DATEADD(DAY, -7, '20260630')",
@@ -1470,6 +1510,10 @@ window.COURSE = {
       "n": 11,
       "title": "CASE",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_17_178",
+      "deckPages": [
+        102,
+        108
+      ],
       "practices": [
         {
           "id": "11-1",
@@ -1478,28 +1522,28 @@ window.COURSE = {
           "intro": "כל בקשה דורשת CASE אחד. לפני שמריצים: כמה שורות יחזרו?",
           "questions": [
             {
-              "q": "הכספים: \"לכל הזמנה, תסמנו 'No delivery' אם לא היה משלוח, 'No tip' אם היה משלוח בלי טיפ, ו־'Tip' אם היה טיפ.\" (`tip`)",
+              "q": "הכספים: \"לכל הזמנה, תסמנו 'No delivery' אם לא היה משלוח, 'No tip' אם היה משלוח בלי טיפ, ו־'Tip' אם היה טיפ.\" (`tip`) (טבלה: `orders`)",
               "answer": 1250,
               "unit": "שורות",
               "solution": "SELECT order_id,\n       tip,\n       CASE\n           WHEN tip IS NULL THEN 'No delivery'\n           WHEN tip = 0 THEN 'No tip'\n           ELSE 'Tip'\n       END AS tip_label\nFROM orders",
               "note": "179 No delivery, 381 No tip, 690 Tip. אם שוכחים את IS NULL, 179 ההזמנות בלי משלוח נופלות ל־'Tip'."
             },
             {
-              "q": "צוות האפליקציה: \"לכל הזמנה, 'Lunch' אם היא נכנסה לפני 17:00, ו־'Dinner' אחרת.\" (`order_time`)",
+              "q": "צוות האפליקציה: \"לכל הזמנה, 'Lunch' אם היא נכנסה לפני 17:00, ו־'Dinner' אחרת.\" (`order_time`) (טבלה: `orders`)",
               "answer": 1250,
               "unit": "שורות",
               "solution": "SELECT order_id,\n       order_time,\n       CASE\n           WHEN order_time < '17:00' THEN 'Lunch'\n           ELSE 'Dinner'\n       END AS meal\nFROM orders",
               "note": "377 Lunch, 873 Dinner."
             },
             {
-              "q": "המטבח: \"רק המנות הטבעוניות. ליד כל אחת: 'Available' או 'Out of stock'.\" (`is_vegan`, `is_available`)",
+              "q": "המטבח: \"רק המנות הטבעוניות. ליד כל אחת: 'Available' או 'Out of stock'.\" (`is_vegan`, `is_available`) (טבלה: `menu_items`)",
               "answer": 96,
               "unit": "שורות",
               "solution": "SELECT item_id,\n       item_name,\n       CASE\n           WHEN is_available = 1 THEN 'Available'\n           ELSE 'Out of stock'\n       END AS stock_status\nFROM menu_items\nWHERE is_vegan = 1",
               "note": "89 Available, 7 Out of stock. WHERE מסנן שורות, CASE רק מסמן אותן."
             },
             {
-              "q": "שירות הלקוחות: \"לכל ביקורת: 'Positive' לדירוג 4 או 5, 'Neutral' ל־3, ו־'Negative' לכל השאר.\" (`rating`)",
+              "q": "שירות הלקוחות: \"לכל ביקורת: 'Positive' לדירוג 4 או 5, 'Neutral' ל־3, ו־'Negative' לכל השאר.\" (`rating`) (טבלה: `reviews`)",
               "answer": 470,
               "unit": "שורות",
               "solution": "SELECT review_id,\n       rating,\n       CASE\n           WHEN rating >= 4 THEN 'Positive'\n           WHEN rating = 3 THEN 'Neutral'\n           ELSE 'Negative'\n       END AS review_type\nFROM reviews",
@@ -1652,6 +1696,10 @@ window.COURSE = {
       "n": 12,
       "title": "פונקציות סיכום",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_17_256",
+      "deckPages": [
+        109,
+        116
+      ],
       "practices": [
         {
           "id": "12-1",
@@ -1660,14 +1708,14 @@ window.COURSE = {
           "intro": "כל בקשה מחזירה שורה אחת. לפני שמריצים: נחשו את התשובה בערך.",
           "questions": [
             {
-              "q": "השיווק: \"בכמה הזמנות השתמשו בקופון?\"",
+              "q": "השיווק: \"בכמה הזמנות השתמשו בקופון?\" (טבלה: `orders`)",
               "answer": 259,
               "label": "הערך שקיבלתם",
               "solution": "SELECT COUNT(coupon_id) AS orders_with_coupon\nFROM orders",
               "note": "COUNT(coupon_id) מדלג על ההזמנות בלי קופון. COUNT(*) כאן היה מחזיר 1250, וזו טעות נפוצה."
             },
             {
-              "q": "המטבח: \"מה המחיר של המנה הזולה ביותר בתפריט, ושל היקרה ביותר?\"",
+              "q": "המטבח: \"מה המחיר של המנה הזולה ביותר בתפריט, ושל היקרה ביותר?\" (טבלה: `menu_items`)",
               "answer": [
                 9,
                 86
@@ -1677,7 +1725,7 @@ window.COURSE = {
               "note": "9.00 ו־86.00."
             },
             {
-              "q": "השיווק: \"מה המחיר הממוצע של מנה בתפריט? שתי ספרות אחרי הנקודה.\"",
+              "q": "השיווק: \"מה המחיר הממוצע של מנה בתפריט? שתי ספרות אחרי הנקודה.\" (טבלה: `menu_items`)",
               "answer": 37.66,
               "label": "הערך שקיבלתם",
               "hint": "CAST ל־DECIMAL(5,2) מפרק 9.",
@@ -1685,7 +1733,7 @@ window.COURSE = {
               "note": "price הוא DECIMAL, ולכן AVG מחזיר כאן ערך עשרוני גם בלי * 1.0. הבעיה של הממוצע השלם קיימת רק בעמודות INT."
             },
             {
-              "q": "שירות הלקוחות: \"מה הדירוג הממוצע בביקורות?\" הריצו פעם אחת עם `AVG(rating)`, ופעם בדרך שנותנת ממוצע מדויק.",
+              "q": "שירות הלקוחות: \"מה הדירוג הממוצע בביקורות?\" הריצו פעם אחת עם `AVG(rating)`, ופעם בדרך שנותנת ממוצע מדויק. (טבלה: `reviews`)",
               "answer": [
                 4,
                 4.3
@@ -1850,6 +1898,10 @@ window.COURSE = {
       "n": 13,
       "title": "GROUP BY",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_19_0",
+      "deckPages": [
+        117,
+        126
+      ],
       "practices": [
         {
           "id": "13-1",
@@ -1858,21 +1910,21 @@ window.COURSE = {
           "intro": "לפני כל שאילתה: כמה שורות יחזרו?",
           "questions": [
             {
-              "q": "המטבח: \"לכל קטגוריית מנות: כמה מנות יש, ומה המחיר הזול והיקר בה?\" (`category_id`)",
+              "q": "המטבח: \"לכל קטגוריית מנות: כמה מנות יש, ומה המחיר הזול והיקר בה?\" (`category_id`) (טבלה: `menu_items`)",
               "answer": 5,
               "unit": "שורות",
               "solution": "SELECT category_id,\n       COUNT(*) AS item_count,\n       MIN(price) AS min_price,\n       MAX(price) AS max_price\nFROM menu_items\nGROUP BY category_id",
               "note": "בקטגוריה 2 (Mains) יש 70 מנות, במחירים מ־28.00 עד 86.00."
             },
             {
-              "q": "רכזת השליחים: \"כמה שליחים יש לכל סוג רכב?\" (`vehicle_type`)",
+              "q": "רכזת השליחים: \"כמה שליחים יש לכל סוג רכב?\" (`vehicle_type`) (טבלה: `couriers`)",
               "answer": 4,
               "unit": "שורות",
               "solution": "SELECT vehicle_type,\n       COUNT(*) AS courier_count\nFROM couriers\nGROUP BY vehicle_type",
               "note": "Scooter: 15, e-Bike: 5, Car: 4, Bicycle: 1."
             },
             {
-              "q": "שירות הלקוחות: \"כמה ביקורות קיבלנו מכל דירוג?\" (`rating`)",
+              "q": "שירות הלקוחות: \"כמה ביקורות קיבלנו מכל דירוג?\" (`rating`) (טבלה: `reviews`)",
               "answer": 4,
               "unit": "שורות",
               "hint": "יש 5 דירוגים אפשריים. כמה מהם מופיעים בנתונים?",
@@ -1880,7 +1932,7 @@ window.COURSE = {
               "note": "אין אף ביקורת עם דירוג 1. GROUP BY מציג רק ערכים שקיימים בנתונים. דירוג 2: 8, דירוג 3: 72, דירוג 4: 163, דירוג 5: 227."
             },
             {
-              "q": "הנהלת החברה: \"כמה הזמנות היו בכל חודש של 2026?\"",
+              "q": "הנהלת החברה: \"כמה הזמנות היו בכל חודש של 2026?\" (טבלה: `orders`)",
               "answer": 6,
               "unit": "שורות",
               "solution": "SELECT MONTH(order_date) AS order_month,\n       COUNT(*) AS order_count\nFROM orders\nWHERE order_date >= '20260101'\nGROUP BY MONTH(order_date)",
@@ -2049,6 +2101,10 @@ window.COURSE = {
       "n": 14,
       "title": "HAVING",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_19_99",
+      "deckPages": [
+        127,
+        133
+      ],
       "practices": [
         {
           "id": "14-1",
@@ -2057,14 +2113,14 @@ window.COURSE = {
           "intro": "לכל בקשה: איזה תנאי שייך ל־WHERE ואיזה ל־HAVING? כתבו את השאילתה ב־SSMS והקלידו כאן כמה שורות קיבלתם.",
           "questions": [
             {
-              "q": "השיווק: \"אילו לקוחות הזמינו לפחות 40 פעמים?\"",
+              "q": "השיווק: \"אילו לקוחות הזמינו לפחות 40 פעמים?\" (טבלה: `orders`)",
               "answer": 7,
               "unit": "שורות",
               "solution": "SELECT customer_id, COUNT(*) AS order_count\nFROM orders\nGROUP BY customer_id\nHAVING COUNT(*) >= 40",
               "note": "לקוחות 3 ו־77 מובילים, עם 50 הזמנות כל אחד. לקוחה 3 מוכרת מפרק 5."
             },
             {
-              "q": "רכזת השליחים: \"אילו שליחים ביצעו יותר מ־60 משלוחים?\" בדקו מה מתקבל עם `WHERE courier_id IS NOT NULL` ובלי WHERE.",
+              "q": "רכזת השליחים: \"אילו שליחים ביצעו יותר מ־60 משלוחים?\" בדקו מה מתקבל עם `WHERE courier_id IS NOT NULL` ובלי WHERE. (טבלה: `orders`)",
               "answer": [
                 4,
                 5
@@ -2074,14 +2130,14 @@ window.COURSE = {
               "note": "בלי WHERE מופיעה שורה נוספת עם courier_id ריק ו־179 הזמנות. GROUP BY מכניס את כל ה־NULL לקבוצה אחת. אלה 179 ההזמנות בלי משלוח. השליח המוביל הוא 15, עם 76 משלוחים."
             },
             {
-              "q": "אילו מסעדות קיבלו טיפ ממוצע למשלוח (רק הזמנות שנמסרו) מעל 9 שקלים? (`tip`)",
+              "q": "אילו מסעדות קיבלו טיפ ממוצע למשלוח (רק הזמנות שנמסרו) מעל 9 שקלים? (`tip`) (טבלה: `orders`)",
               "answer": 3,
               "unit": "שורות",
               "solution": "SELECT restaurant_id, AVG(tip) AS avg_tip\nFROM orders\nWHERE order_status = 'Delivered'\nGROUP BY restaurant_id\nHAVING AVG(tip) > 9",
               "note": "המסעדות הן 24, 11 ו־26. הממוצע של 24 הוא 10.20. גם בלי WHERE מתקבלות אותן 3: בהזמנות שלא נמסרו tip הוא NULL, ו־AVG מדלג עליו. tip היא DECIMAL, ולכן AVG לא קוצץ כאן ואין צורך ב־* 1.0."
             },
             {
-              "q": "מוקד השירות: \"אילו מסעדות ביטלו לפחות 6 הזמנות?\"",
+              "q": "מוקד השירות: \"אילו מסעדות ביטלו לפחות 6 הזמנות?\" (טבלה: `orders`)",
               "answer": 2,
               "unit": "שורות",
               "solution": "SELECT restaurant_id, COUNT(*) AS cancelled_count\nFROM orders\nWHERE order_status = 'Cancelled'\nGROUP BY restaurant_id\nHAVING COUNT(*) >= 6",
@@ -2096,7 +2152,7 @@ window.COURSE = {
           "intro": "לכל שאלה: החליטו קודם אילו תנאים שייכים ל־WHERE ואילו ל־HAVING. רק אחר כך כתבו את השאילתה.",
           "questions": [
             {
-              "q": "מנהלת התפעול רוצה לשלוח שליח נוסף למסעדות האיטיות (זמן משלוח ממוצע מעל 40 דקות). מנהל הכספים טוען שאחת מהן לא באמת איטית, פשוט יש לה מעט מדי משלוחים כדי לדעת. כתבו שאילתה שמחזירה רק מסעדות עם ממוצע מעל 40 דקות ולפחות 10 משלוחים.",
+              "q": "מנהלת התפעול רוצה לשלוח שליח נוסף למסעדות האיטיות (זמן משלוח ממוצע מעל 40 דקות). מנהל הכספים טוען שאחת מהן לא באמת איטית, פשוט יש לה מעט מדי משלוחים כדי לדעת. כתבו שאילתה שמחזירה רק מסעדות עם ממוצע מעל 40 דקות ולפחות 10 משלוחים. (טבלה: `orders`)",
               "answer": 4,
               "unit": "שורות",
               "hint": "שני התנאים הם על סיכומים. איך מחברים שני תנאים?",
@@ -2104,7 +2160,7 @@ window.COURSE = {
               "note": "מסעדה 28 נעלמת: יש לה רק 4 משלוחים בכל התקופה. ממוצע של 4 משלוחים הוא לא בסיס להחלטה, ולכן מנהל הכספים צודק. שני התנאים ב־HAVING, מחוברים ב־AND, בדיוק כמו ב־WHERE. COUNT(delivery_minutes) סופר בדיוק את המשלוחים שנכנסו לממוצע."
             },
             {
-              "q": "השיווק רוצה לתת הטבה ללקוחות נאמנים: לקוחות שהזמינו לפחות 10 פעמים מאז תחילת 2026.",
+              "q": "השיווק רוצה לתת הטבה ללקוחות נאמנים: לקוחות שהזמינו לפחות 10 פעמים מאז תחילת 2026. (טבלה: `orders`)",
               "answer": 15,
               "unit": "שורות",
               "solution": "SELECT customer_id, COUNT(*) AS order_count\nFROM orders\nWHERE order_date >= '20260101'\nGROUP BY customer_id\nHAVING COUNT(*) >= 10",
@@ -2207,6 +2263,10 @@ window.COURSE = {
       "n": 15,
       "title": "JOIN",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_19_177",
+      "deckPages": [
+        134,
+        150
+      ],
       "practices": [
         {
           "id": "15-1",
@@ -2362,6 +2422,10 @@ window.COURSE = {
       "n": 16,
       "title": "LEFT JOIN ו־self join",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_19_279",
+      "deckPages": [
+        151,
+        160
+      ],
       "practices": [
         {
           "id": "16-1",
@@ -2463,6 +2527,10 @@ window.COURSE = {
       "n": 17,
       "title": "תתי־שאילתות",
       "slides": "https://docs.google.com/presentation/d/e/2PACX-1vSpSgXk841hNdwDkKYAbmlm9mBgEH4z0cyaTcQAuBcsCBWywivGJRRTzMESnIeDhijysA-tmb0gMbAY/pubembed?start=false&loop=false&delayms=3000&slide=id.h2890581bcbdd8d51_19_385",
+      "deckPages": [
+        161,
+        167
+      ],
       "practices": [
         {
           "id": "17-1",
@@ -2580,5 +2648,7 @@ window.COURSE = {
       ]
     }
   ],
-  "extrasPage": "extras.html"
+  "extrasPage": "extras.html",
+  "schemaPage": "schema.html",
+  "teacherGuide": "https://docs.google.com/document/d/1-7Wiy98isHlL-9-NVlWb1Kkh0YKkFKcBqGAKCTH1ilg/edit?usp=sharing"
 };

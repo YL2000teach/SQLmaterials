@@ -22,7 +22,7 @@
   function topbar(crumbs) {
     return `<div class="topbar"><div class="wrap">
       <div class="crumbs">${crumbs}</div>
-      <div class="setup-link">המסד FoodRush לא מותקן במחשב? <a href="${C.setupPage}" target="_blank" rel="noopener">להתקנה</a></div>
+      <div class="setup-link">המסד FoodRush לא מותקן במחשב? <a href="${C.setupPage}" target="_blank" rel="noopener">להתקנה</a>${C.schemaPage ? ` · <a href="${C.schemaPage}" target="_blank" rel="noopener">מבנה המסד</a>` : ""}</div>
     </div></div>`;
   }
   const home = `<a href="index.html">${esc(C.title)}</a>`;
@@ -43,7 +43,7 @@
           <span class="meta">${ch.practices.length ? ch.practices.length + " תרגולים" : ""}</span>
         </a></li>`).join("")}</ul>
       ${C.extrasPage ? `<p class="extras-link"><a href="${C.extrasPage}">${esc(KINDS.extras || "תרגילי רשות")}: תרגילים נוספים לכל הפרקים</a></p>` : ""}
-      <footer>להתקנת המסד: <a href="${C.setupPage}">דף ההתקנה</a></footer></main>`;
+      <footer>להתקנת המסד: <a href="${C.setupPage}">דף ההתקנה</a>${C.teacherGuide ? ` · <a href="${C.teacherGuide}" target="_blank" rel="noopener">מדריך למורה</a>` : ""}</footer></main>`;
   }
 
   /* ---------- chapter ---------- */
@@ -61,7 +61,7 @@
       : `<div class="slides"><div class="placeholder">כאן תופיע המצגת של הפרק</div></div>`;
     $("#app").innerHTML = topbar(`${home} › פרק ${ch.n}`) + `<main class="wrap">
       <h1>פרק ${ch.n}: ${esc(ch.title)}</h1>
-      <h2>ההקניה</h2>${slides}
+      <h2>ההקניה</h2>${ch.deckPages ? `<p class="deck-pages">שקפים ${esc(ch.deckPages[0])} עד ${esc(ch.deckPages[1])} במצגת</p>` : ""}${slides}
       <h2>${KINDS.lesson}</h2>${list("lesson")}
       <h2>${KINDS.self}</h2>${list("self")}
       ${ch.extras && ch.extras.length && C.extrasPage ? `<h2>${esc(KINDS.extras || "תרגילי רשות")}</h2><p><a href="${C.extrasPage}#ch${ch.n}">${ch.extras.length} תרגילים נוספים לפרק הזה</a></p>` : ""}
@@ -219,7 +219,34 @@
   }
 
   const page = document.body.dataset.page;
+  function renderSchema() {
+    document.title = "מבנה המסד: " + C.title;
+    $("#app").innerHTML = topbar(`${home} › מבנה המסד`) + `<main class="wrap">
+      <h1>מבנה המסד FoodRush</h1>
+      <p class="schema-legend"><span class="pk">PK</span> מפתח ראשי. <span class="fk">FK</span> מפתח זר: מצביע על מפתח ראשי בטבלה אחרת. הקווים מחברים כל מפתח זר למפתח הראשי שהוא מצביע עליו. ההזמנות (orders) ופרטי ההזמנה (order_items) בכחול כהה.</p>
+      <div class="schema-tools">
+        <button type="button" data-z="in">הגדלה +</button>
+        <button type="button" data-z="out">הקטנה −</button>
+        <button type="button" data-z="fit">התאמה לרוחב</button>
+        <a href="assets/erd.svg" target="_blank" rel="noopener">פתיחה בחלון נפרד</a>
+        <button type="button" data-z="print">הדפסה</button>
+      </div></main>
+      <div class="schema-view"><img id="erd" src="assets/erd.svg" alt="תרשים הטבלאות של מסד FoodRush"></div>`;
+    const img = $("#erd"), view = $(".schema-view");
+    let w = 0;
+    const fit = () => { w = view.clientWidth - 24; img.style.width = w + "px"; };
+    img.addEventListener("load", fit); if (img.complete) fit();
+    document.querySelectorAll(".schema-tools button").forEach(b => b.addEventListener("click", () => {
+      const z = b.dataset.z;
+      if (z === "in") { w = Math.round(w * 1.25); img.style.width = w + "px"; }
+      else if (z === "out") { w = Math.max(300, Math.round(w / 1.25)); img.style.width = w + "px"; }
+      else if (z === "fit") fit();
+      else if (z === "print") window.print();
+    }));
+  }
+
   if (page === "index") renderIndex();
+  else if (page === "schema") renderSchema();
   else if (page === "chapter") renderChapter();
   else if (page === "practice") renderPractice();
   else if (page === "extras") renderExtras();
