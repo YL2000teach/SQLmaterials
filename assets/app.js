@@ -6,8 +6,9 @@
   const OPS = new Set("AND OR NOT IN BETWEEN LIKE IS NULL EXISTS".split(" "));
 
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  // `code` inside Hebrew text
-  const rich = s => esc(s).replace(/&lt;br&gt;/g, "<br>").replace(/`([^`]+)`/g, "&rlm;<code>$1</code>&rlm;");
+  // `code` inside Hebrew text. Adjacent punctuation is glued to the box so it never wraps alone to the next line.
+  const rich = s => esc(s).replace(/&lt;br&gt;/g, "<br>")
+    .replace(/(\(|&quot;|')?`([^`]+)`((?:[)\].,:;!?'״]|&quot;)*)/g, '<span class="cw">$1<code>$2</code>$3</span>');
   function sql(src) {
     return esc(src).replace(/(&#39;|')[^']*'|\b[A-Za-z_]+\b/g, t => {
       if (t.startsWith("'")) return `<span class="str">${t}</span>`;
@@ -72,13 +73,15 @@
   /* ---------- practice ---------- */
   const norm = v => String(v).trim().replace(/\s+/g, " ").toLowerCase();
   const nums = v => (String(v).match(/-?\d+(?:\.\d+)?/g) || []).map(Number);
-  function isCorrect(given, answer) {
+  // tol (optional, per question): a number counts as correct if it is less than tol away from the answer
+  function isCorrect(given, answer, tol) {
     if (String(given).trim() === "") return null;
+    const same = (x, a) => tol ? Math.abs(x - a) < tol : x === a;
     if (Array.isArray(answer)) {
       const g = nums(given);
-      return g.length === answer.length && g.every((x, i) => x === answer[i]);
+      return g.length === answer.length && g.every((x, i) => same(x, answer[i]));
     }
-    if (typeof answer === "number") { const g = nums(given); return g.length === 1 && g[0] === answer; }
+    if (typeof answer === "number") { const g = nums(given); return g.length === 1 && same(g[0], answer); }
     return norm(given) === norm(answer);
   }
 
@@ -110,7 +113,7 @@
       const parts = [...el.querySelectorAll(".ans")];
       const value = () => parts.length > 1 ? (parts.every(x => x.value.trim() === "") ? "" : parts.map(x => x.value.trim() || "x").join(" ")) : input.value;
       const check = () => {
-        const r = isCorrect(value(), q.answer);
+        const r = isCorrect(value(), q.answer, q.tolerance);
         if (r === null) { fb.className = "fb"; fb.textContent = ""; return; }
         solBtn.disabled = false;
         if (r) { fb.className = "fb ok"; fb.textContent = "נכון"; solved.add(i); }
@@ -142,6 +145,7 @@
 
   /* ---------- extras: all chapters on one page ---------- */
   function renderExtras() {
+    if (!C.extrasPage) { location.replace("index.html"); return; }
     const label = KINDS.extras || "תרגילי רשות";
     document.title = `${label} | ${C.title}`;
     const chs = C.chapters.filter(ch => ch.extras && ch.extras.length);
@@ -200,7 +204,7 @@
       const parts = [...el.querySelectorAll(".ans")];
       const value = () => parts.length > 1 ? (parts.every(x => x.value.trim() === "") ? "" : parts.map(x => x.value.trim() || "x").join(" ")) : input.value;
       const check = () => {
-        const r = isCorrect(value(), q.answer);
+        const r = isCorrect(value(), q.answer, q.tolerance);
         if (r === null) { fb.className = "fb"; fb.textContent = ""; return; }
         fb.className = r ? "fb ok" : "fb bad";
         fb.textContent = r ? "נכון" : "לא בדיוק. בדקו את השאילתה";
