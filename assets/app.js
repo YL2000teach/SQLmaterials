@@ -71,7 +71,8 @@
   }
 
   /* ---------- practice ---------- */
-  const norm = v => String(v).trim().replace(/\s+/g, " ").toLowerCase();
+  // trailing period or quotes are ignored, e.g. "ב." or "'b'"
+  const norm = v => String(v).trim().replace(/^["'״]+|["'״.]+$/g, "").trim().replace(/\s+/g, " ").toLowerCase();
   const nums = v => (String(v).match(/-?\d+(?:\.\d+)?/g) || []).map(Number);
   // tol (optional, per question): a number counts as correct if it is less than tol away from the answer
   function isCorrect(given, answer, tol) {
