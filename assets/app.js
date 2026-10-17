@@ -31,6 +31,7 @@
   const findChapter = n => C.chapters.find(c => c.n === n);
   function findPractice(id) {
     for (const ch of C.chapters) for (const p of ch.practices) if (p.id === id) return { ch, p };
+    if (C.summary && C.summary.id === id) return { ch: null, p: C.summary };
     return null;
   }
 
@@ -43,7 +44,11 @@
         <li><a href="chapter.html?ch=${ch.n}">
           <span class="num">${ch.n}</span><span class="t">${esc(ch.title)}</span>
           <span class="meta">${ch.practices.length ? ch.practices.length + " תרגולים" : ""}</span>
-        </a></li>`).join("")}</ul>
+        </a></li>`).join("")}${C.summary ? `
+        <li class="summary"><a href="practice.html?id=${encodeURIComponent(C.summary.id)}">
+          <span class="num">Σ</span><span class="t">${esc(C.summary.title)}</span>
+          <span class="meta">${C.summary.questions.length} שאלות</span>
+        </a></li>` : ""}</ul>
       ${C.extrasPage ? `<p class="extras-link"><a href="${C.extrasPage}">${esc(KINDS.extras || "תרגילי רשות")}: תרגילים נוספים לכל הפרקים</a></p>` : ""}
       <footer>להתקנת המסד: <a href="${C.setupPage}">דף ההתקנה</a>${C.teacherGuide ? ` · <a href="${C.teacherGuide}" target="_blank" rel="noopener">מדריך למורה</a>` : ""}</footer></main>`;
   }
@@ -134,7 +139,7 @@
     const found = findPractice(params.get("id"));
     if (!found) { $("#app").innerHTML = topbar(home) + `<main class="wrap"><h1>התרגול לא נמצא</h1></main>`; return; }
     const { ch, p } = found;
-    document.title = `${p.title} | פרק ${ch.n}`;
+    document.title = ch ? `${p.title} | פרק ${ch.n}` : `${p.title} | ${C.title}`;
     if (p.kind === "self") return renderSelf(ch, p);
     $("#app").innerHTML = topbar(`${home} › <a href="chapter.html?ch=${ch.n}">פרק ${ch.n}</a> › ${esc(KINDS[p.kind] || "")}`) + `<main class="wrap">
       <h1>${esc(p.title)}</h1>${p.intro ? `<p class="lead">${rich(p.intro)}</p>` : ""}${colTip()}
@@ -165,7 +170,6 @@
     set(k, v) { try { localStorage.setItem(k, v); } catch (_) {} }
   };
   function renderSelf(ch, p) {
-    const teacher = params.get("teacher") === "1";
     const key = f => `fr:${p.id}:${f}`;
     const qs = p.questions.map((q, i) => `
       <section class="q" data-i="${i}">
@@ -176,23 +180,24 @@
           ${q.explain ? `<p class="q-part"><b>בתשובה במילים:</b> ${rich(q.explain)}</p>` : ""}
           ${q.q ? rich(q.q) : ""}</div></div>
         ${q.hint ? `<div class="hint">${rich(q.hint)}</div>` : ""}
-        <label class="fld">השאילתה שכתבתם<textarea class="sqlbox" data-f="q${i}" rows="4" dir="ltr" spellcheck="false"></textarea></label>
-        <label class="fld">התשובה במילים<textarea class="txtbox" data-f="t${i}" rows="2"></textarea></label>
+        ${q.noSql ? "" : `<label class="fld">השאילתה שכתבתם<textarea class="sqlbox" data-f="q${i}" rows="4" dir="ltr" spellcheck="false"></textarea></label>`}
+        <label class="fld">התשובה במילים<textarea class="txtbox" data-f="t${i}" rows="${q.noSql ? 10 : 2}"></textarea></label>
         ${open(q) ? "" : `<div class="row"><span class="selfcheck">בדיקה עצמית:</span>
           ${q.fields ? q.fields.map((f, j) => `<span class="pair"><label for="a${i}_${j}">${esc(f)}:</label>
           <input class="ans part" id="a${i}_${j}" autocomplete="off" dir="ltr"></span>`).join("") : `<label for="a${i}">${q.label ? esc(q.label) : "התשובה"}:</label>
           <input class="ans" id="a${i}" autocomplete="off">`}<button class="check ghost">בדיקה</button>
           <span class="fb" role="status" aria-live="polite"></span></div>`}
-        ${teacher && q.solution ? `<div class="sol"><pre class="sql">${sql(q.solution)}</pre>${q.note ? `<div class="note">${rich(q.note)}</div>` : ""}</div>` : ""}
       </section>`).join("");
-    $("#app").innerHTML = topbar(`${home} › <a href="chapter.html?ch=${ch.n}">פרק ${ch.n}</a> › ${esc(KINDS.self)}`) + `<main class="wrap">
+    const crumbs = ch ? `${home} › <a href="chapter.html?ch=${ch.n}">פרק ${ch.n}</a> › ${esc(KINDS.self)}` : `${home} › ${esc(p.title)}`;
+    const back = ch ? `<a href="chapter.html?ch=${ch.n}">חזרה לפרק ${ch.n}</a>` : `<a href="index.html">לכל הפרקים</a>`;
+    $("#app").innerHTML = topbar(crumbs) + `<main class="wrap">
       <h1>${esc(p.title)}</h1>${p.intro ? `<p class="lead">${rich(p.intro)}</p>` : ""}${colTip()}
       <div class="howto"><b>איך מגישים:</b> לכל שאלה כותבים את השאילתה ב־SSMS, מעתיקים אותה לתיבה, וכותבים תשובה במילים.
         בסוף לוחצים "העתקת כל התשובות", ומדביקים במטלה ב־Classroom.</div>
       <label class="fld name">שם מלא<input class="txtbox" data-f="name" autocomplete="name"></label>
       ${qs}
       <div class="submit"><button id="copyall">העתקת כל התשובות</button><span class="fb" id="copyfb" role="status" aria-live="polite"></span></div>
-      <footer><a href="chapter.html?ch=${ch.n}">חזרה לפרק ${ch.n}</a></footer></main>`;
+      <footer>${back}</footer></main>`;
 
     document.querySelectorAll("[data-f]").forEach(el => {
       el.value = store.get(key(el.dataset.f));
@@ -215,9 +220,10 @@
     });
     $("#copyall").addEventListener("click", async () => {
       const v = f => (document.querySelector(`[data-f="${f}"]`).value || "").trim();
-      const parts = [`שם: ${v("name") || "(לא מולא)"}`, `${p.title} (פרק ${ch.n})`.replace(`: פרק ${ch.n} (פרק ${ch.n})`, `: פרק ${ch.n}`), ""];
+      const parts = [`שם: ${v("name") || "(לא מולא)"}`, ch ? `${p.title} (פרק ${ch.n})`.replace(`: פרק ${ch.n} (פרק ${ch.n})`, `: פרק ${ch.n}`) : p.title, ""];
       p.questions.forEach((q, i) => {
-        parts.push(`${i + 1}. ${plain(q.title || q.q || "")}`, "שאילתה:", v("q" + i) || "(ריק)", `תשובה: ${v("t" + i) || "(ריק)"}`, "");
+        if (q.noSql) parts.push(`${i + 1}. ${plain(q.title || q.q || "")}`, v("t" + i) || "(ריק)", "");
+        else parts.push(`${i + 1}. ${plain(q.title || q.q || "")}`, "שאילתה:", v("q" + i) || "(ריק)", `תשובה: ${v("t" + i) || "(ריק)"}`, "");
       });
       const text = parts.join("\n"), fb = $("#copyfb");
       try { await navigator.clipboard.writeText(text); fb.className = "fb ok"; fb.textContent = "הועתק. עכשיו מדביקים במטלה ב־Classroom"; }

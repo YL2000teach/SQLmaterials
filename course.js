@@ -7,8 +7,8 @@
      id        מזהה ייחודי. הקישור לתרגול הוא practice.html?id=<id>
      kind      "lesson" = תרגול מהמצגת (טכני, זהה לשקף, עם בדיקה ופתרון)
                "self"   = תרגול עצמאי (שאלות עסקיות. התלמיד כותב שאילתה ותשובה במילים,
-                          ומעתיק הכול למטלה ב־Classroom. הפתרונות לא מוצגים לתלמיד.
-                          המורה רואה אותם בכתובת practice.html?id=<id>&teacher=1)
+                          ומעתיק הכול למטלה ב־Classroom. בקובץ הזה אין פתרונות והערות
+                          לתרגול עצמי: הם בקובץ המלא למורה ובקובץ התשובות)
                בתרגול עצמאי answer משמש לבדיקה עצמית של מספר מפתח, ו־note הוא הערה למורה
      title     כותרת
      intro     שורת הסבר (לא חובה)
@@ -114,8 +114,6 @@ window.COURSE = {
                 160
               ],
               "hint": "מספר השורות מופיע בפינה הימנית התחתונה של SSMS.",
-              "solution": "SELECT *\nFROM restaurants\n\nSELECT *\nFROM couriers\n\nSELECT *\nFROM customers",
-              "note": "30 מסעדות, 25 שליחים ו־160 לקוחות: בערך 6 לקוחות על כל שליח. תשובה טובה נותנת את שלושת המספרים ומוסיפה יחס אחד לפחות, למשל לקוחות לשליח.",
               "fields": [
                 "מסעדות",
                 "שליחים",
@@ -131,8 +129,6 @@ window.COURSE = {
                 5,
                 207
               ],
-              "solution": "SELECT category_name\nFROM dish_categories\n\nSELECT item_name, price\nFROM menu_items",
-              "note": "5 קטגוריות ו־207 מנות: בממוצע קצת פחות מ־7 מנות למסעדה. תשובה טובה מחשבת את הממוצע למסעדה, ומציינת שממוצע לא מראה אם יש הבדלים גדולים בין המסעדות.",
               "fields": [
                 "קטגוריות",
                 "מנות"
@@ -148,8 +144,6 @@ window.COURSE = {
                 6
               ],
               "hint": "את המחוזות סופרים בעיניים מתוך התוצאה. בפרק 4 נלמד לעשות את זה בשאילתה.",
-              "solution": "SELECT city_name, district\nFROM cities",
-              "note": "בטבלת `cities` מיוצגות 13 ערים ב־6 מחוזות: Tel Aviv, Jerusalem, Haifa, South, Center, North. במחוז Center יש הכי הרבה ערים (4). תשובה טובה נותנת את שני המספרים ומציינת את המחוז הבולט. תלמיד שמסייג ש\"עיר בטבלה\" עדיין לא מוכיחה פעילות באותה עיר צודק.",
               "fields": [
                 "ערים",
                 "מחוזות"
@@ -164,8 +158,6 @@ window.COURSE = {
                 8,
                 50
               ],
-              "solution": "SELECT coupon_code, discount_pct, valid_from, valid_to\nFROM coupons",
-              "note": "8 קופונים. ההנחה הגדולה ביותר היא VIP50, 50%, בתוקף רק בספטמבר 2026. רוב הקופונים בין 10% ל־20%. תשובה טובה נותנת את שני המספרים ואת מועד התוקף, ומנמקת עמדה לגבי גובה ההנחות.",
               "fields": [
                 "קופונים",
                 "ההנחה הגדולה ביותר באחוזים"
@@ -268,8 +260,6 @@ window.COURSE = {
                 16.9,
                 2
               ],
-              "solution": "SELECT order_id,\n       delivery_fee,\n       delivery_fee + 2 AS new_fee\nFROM orders",
-              "note": "הזמנה 1: 16.90. הזמנה 6: 2.00. הזמנה 6 היא איסוף עצמי, ודמי המשלוח בה 0. החישוב הפשוט מחייב 2 שקלים גם על הזמנה בלי משלוח. תשובה טובה מזהה שהחישוב מחייב גם הזמנה בלי משלוח, ומציעה להחריג הזמנות כאלה.",
               "fields": [
                 "הזמנה 1",
                 "הזמנה 6"
@@ -281,9 +271,7 @@ window.COURSE = {
               "task": "מטבלת `menu_items` הציגו את מספר המנה (`item_id`), את שם המנה, את המחיר בשקלים, ועמודה בשם `price_usd` עם המחיר בדולרים.",
               "explain": "כמה עולה בדולרים השקשוקה של מנה 1 (`item_id = 1`), ומה הבעיה בהצגה של המספר כמו שהוא יוצא מהשאילתה.",
               "answer": 12.97,
-              "label": "מחיר השקשוקה (מנה 1) בדולרים, שתי ספרות אחרי הנקודה",
-              "solution": "SELECT item_name,\n       price,\n       price / 3.7 AS price_usd\nFROM menu_items",
-              "note": "48 / 3.7 = 12.972972. באפליקציה מציגים מחיר עם שתי ספרות אחרי הנקודה, ולכן צריך לעגל. `ROUND` נלמד בפרק 9. תשובה טובה נותנת את המחיר ומזהה את הבעיה בתצוגה של ספרות רבות אחרי הנקודה."
+              "label": "מחיר השקשוקה (מנה 1) בדולרים, שתי ספרות אחרי הנקודה"
             },
             {
               "title": "עמלה למסעדות",
@@ -294,8 +282,6 @@ window.COURSE = {
                 4.75,
                 4.25
               ],
-              "solution": "SELECT order_id, item_id, quantity, unit_price,\n       quantity * unit_price * 0.25 AS commission\nFROM order_items",
-              "note": "בהזמנה 1 שתי שורות: מנה 113 (19.00) עם עמלה 4.75, ומנה 115 (17.00) עם עמלה 4.25. ביחד 9.00 שקלים: זו הכנסה מעמלות, לא רווח, כי השאילתה לא מחשבת עלויות. תשובה טובה מחברת את שתי השורות לסכום ההכנסה מעמלות על ההזמנה.",
               "fields": [
                 "העמלה על מנה 113",
                 "העמלה על מנה 115"
@@ -305,9 +291,7 @@ window.COURSE = {
               "title": "הודעת SMS ללקוחות",
               "context": "שירות הלקוחות רוצה לשלוח לכל לקוח הודעה אישית עם השם שלו, ולבדוק קודם איך ההודעות ייראו.",
               "task": "מטבלת `customers` הציגו את מספר הלקוח ועמודה בשם sms עם הטקסט Hi, השם הפרטי, ואחריו your order is on the way. למשל: Hi Omer, your order is on the way",
-              "explain": "איך נראית ההודעה של לקוח 1, ומה צריך לבדוק בטקסט לפני ששולחים אותו ל־160 לקוחות (רווחים, פסיקים).",
-              "solution": "SELECT customer_id,\n       'Hi ' + first_name + ', your order is on the way' AS sms\nFROM customers",
-              "note": "לקוח 1: Hi Omer, your order is on the way. טעויות נפוצות: חסר רווח אחרי Hi, או חסר פסיק. תשובה טובה מציגה את ההודעה של לקוח 1 ומציינת שבודקים את הטקסט על כמה שורות לפני שליחה."
+              "explain": "איך נראית ההודעה של לקוח 1, ומה צריך לבדוק בטקסט לפני ששולחים אותו ל־160 לקוחות (רווחים, פסיקים)."
             }
           ]
         }
@@ -378,8 +362,6 @@ window.COURSE = {
                 29,
                 1
               ],
-              "solution": "SELECT restaurant_id\nFROM restaurants\n\nSELECT DISTINCT restaurant_id\nFROM orders",
-              "note": "29 מתוך 30. מסעדה אחת בלי הזמנות בכלל (מסעדה 30, שנפתחה אחרי סוף הנתונים: יתגלה בפרק 8). תשובה טובה נותנת את שלושת המספרים ומציעה לבדוק את הסיבה לפני שמחליטים מה לעשות.",
               "fields": [
                 "מסעדות במערכת",
                 "מסעדות שקיבלו הזמנות",
@@ -397,8 +379,6 @@ window.COURSE = {
                 24
               ],
               "hint": "מה מייצג `NULL` בעמודה `courier_id`?",
-              "solution": "SELECT courier_id\nFROM couriers\n\nSELECT DISTINCT courier_id\nFROM orders",
-              "note": "בשתי השאילתות 25 שורות, אבל באחת מהשורות מטבלת `orders` הערך הוא `NULL`: הזמנות בלי שליח. כלומר 24 שליחים ביצעו משלוחים, ושליח אחד לא ביצע אף משלוח. תשובה טובה מסבירה ש־`DISTINCT` מחזיר גם את `NULL` כשורה, ולכן אי אפשר להסתפק בהשוואת מספר השורות.",
               "fields": [
                 "שליחים בטבלת couriers",
                 "שורות בתוצאה מטבלת orders",
@@ -415,8 +395,6 @@ window.COURSE = {
                 11,
                 2
               ],
-              "solution": "SELECT DISTINCT city_id\nFROM customers\n\nSELECT DISTINCT city_id\nFROM restaurants",
-              "note": "לקוחות יש בכל 13 הערים, ומסעדות רק ב־11. בערים 12 ו־13 (Kiryat Shmona ו־Eilat) יש לקוחות ואין מסעדות. תשובה טובה נותנת את שלושת המספרים ומנמקת אילו ערים כדאי לבדוק. כאן אפשר גם פשוט לחסר 13 פחות 11, כי כל עיר שיש בה מסעדות יש בה גם לקוחות. בפרקים 16 ו־17 נלמד למצוא ערים כאלה בשאילתה.",
               "fields": [
                 "ערים עם לקוחות",
                 "ערים עם מסעדות",
@@ -429,9 +407,7 @@ window.COURSE = {
               "task": "מטבלת `orders` שלפו את כל השילובים השונים של לקוח ומסעדה (`customer_id`, `restaurant_id`). השוו למספר ההזמנות הכולל, 1250. חשבו בלי שאילתה נוספת: 1250 חלקי מספר השילובים.",
               "explain": "כמה שילובים שונים יש, בערך כמה הזמנות יש בממוצע לכל שילוב של לקוח ומסעדה, ומה זה אומר על הנאמנות של הלקוחות.",
               "answer": 512,
-              "label": "כמה שילובים",
-              "solution": "SELECT DISTINCT customer_id, restaurant_id\nFROM orders",
-              "note": "512 שילובים מתוך 1250 הזמנות: בממוצע כ־2.4 הזמנות לכל לקוח בכל מסעדה. כלומר, יש הזמנות חוזרות לאותן מסעדות. הממוצע לא מראה אם זו התנהגות של רוב הלקוחות או של מעט לקוחות שחוזרים הרבה. תשובה טובה מחלקת, מסבירה את המשמעות, ונזהרת מלהסיק על כל הלקוחות מתוך ממוצע."
+              "label": "כמה שילובים"
             },
             {
               "title": "ימים בלי הזמנות",
@@ -442,8 +418,6 @@ window.COURSE = {
                 495,
                 51
               ],
-              "solution": "SELECT DISTINCT order_date\nFROM orders",
-              "note": "495 ימים עם הזמנות, ו־51 ימים בלי אף הזמנה: בערך יום אחד מכל עשרה. תשובה טובה נותנת את שני המספרים ומציעה לבדוק אילו ימים אלה לפני שמסיקים מסקנה.",
               "fields": [
                 "ימים עם הזמנות",
                 "ימים בלי הזמנות"
@@ -546,9 +520,7 @@ window.COURSE = {
               "task": "מטבלת `reviews` מצאו את כל הביקורות שבהן הדירוג (`rating`) הוא 5. בטבלה יש 470 ביקורות. חשבו בלי שאילתה נוספת: מספר השורות בתוצאה חלקי 470.",
               "explain": "כמה ביקורות הן 5 כוכבים, איזה אחוז הן מכל הביקורות, והאם מותר לכתוב בפרסומת \"רוב הביקורות\". אם לא, הציעו ניסוח מדויק.",
               "answer": 227,
-              "label": "כמה ביקורות",
-              "solution": "SELECT *\nFROM reviews\nWHERE rating = 5",
-              "note": "227 מתוך 470, כ־48%. זה פחות מחצי, ולכן \"רוב\" לא נכון. תשובה טובה קובעת ש\"רוב\" לא נכון ומציעה ניסוח מדויק, למשל \"כמעט חצי מהביקורות\"."
+              "label": "כמה ביקורות"
             },
             {
               "title": "\"משלוח תוך שעה או שובר\"",
@@ -559,8 +531,6 @@ window.COURSE = {
                 6,
                 600
               ],
-              "solution": "SELECT *\nFROM orders\nWHERE delivery_minutes > 60",
-              "note": "6 משלוחים, כלומר 600 שקלים פיצוי בשנה וחצי של נתונים. זו עלות קטנה מאוד. תשובה טובה מחשבת את העלות ומנמקת עמדה. היא יכולה להמליץ על ההבטחה, אבל צריכה לסייג שהשפעת ההבטחה על ההזמנות לא נבדקה.",
               "fields": [
                 "משלוחים מעל שעה",
                 "סך הפיצוי בשקלים"
@@ -572,9 +542,7 @@ window.COURSE = {
               "task": "מטבלת `orders` מצאו את כל ההזמנות שהסטטוס שלהן Picked Up. בטבלה יש 1250 הזמנות. חשבו בלי שאילתה נוספת: מספר השורות בתוצאה חלקי 1250.",
               "explain": "כמה הזמנות היו באיסוף עצמי, איזה אחוז הן מכל ההזמנות, והאם הייתם מורידים את הכפתור.",
               "answer": 107,
-              "label": "כמה הזמנות",
-              "solution": "SELECT *\nFROM orders\nWHERE order_status = 'Picked Up'",
-              "note": "107 מתוך 1250, כ־9%: בערך הזמנה אחת מכל אחת־עשרה. תשובה טובה נותנת את המספר ואת האחוז, ומנמקת אם הוא זניח או לא."
+              "label": "כמה הזמנות"
             },
             {
               "title": "מנות פרימיום",
@@ -582,9 +550,7 @@ window.COURSE = {
               "task": "מטבלת `menu_items` מצאו את כל המנות שהמחיר שלהן גבוה מ־70. בתפריט יש 207 מנות. חשבו בלי שאילתה נוספת: מספר השורות בתוצאה חלקי 207.",
               "explain": "כמה מנות ייכנסו ללשונית, איזה אחוז הן מהתפריט, והאם יש מספיק מנות כדי להצדיק לשונית נפרדת.",
               "answer": 9,
-              "label": "כמה מנות",
-              "solution": "SELECT *\nFROM menu_items\nWHERE price > 70",
-              "note": "9 מנות מתוך 207, כ־4%. לשונית עם 9 מנות תיראה ריקה. תשובה טובה נותנת את המספר ואת האחוז, ומנמקת אם יש מספיק מנות ללשונית."
+              "label": "כמה מנות"
             },
             {
               "title": "מסעדות איטיות",
@@ -592,9 +558,7 @@ window.COURSE = {
               "task": "מטבלת `restaurants` מצאו את כל המסעדות שבהן `avg_prep_minutes` גדול מ־20. יש 30 מסעדות.",
               "explain": "כמה מסעדות צריכות יועץ ואילו מסעדות אלה, ואם לדעתכם זו בעיה כללית או בעיה של מסעדות בודדות.",
               "answer": 2,
-              "label": "כמה מסעדות",
-              "solution": "SELECT *\nFROM restaurants\nWHERE avg_prep_minutes > 20",
-              "note": "2 מסעדות מתוך 30. זו בעיה נקודתית, ואפשר לטפל בה ישירות מול שתי המסעדות. תשובה טובה מציינת שמדובר בשתי מסעדות בלבד ונותנת את שמותיהן."
+              "label": "כמה מסעדות"
             }
           ]
         }
@@ -707,9 +671,7 @@ window.COURSE = {
               "task": "מטבלת `menu_items` מצאו את כל המנות שאינן שתייה (`category_id = 5` הוא שתייה) והמחיר שלהן נמוך מ־20. השתמשו ב־`NOT`.",
               "explain": "כמה מנות מתאימות, האם זה מספיק כדי להציע משהו בכל מסעדה (יש 30 מסעדות), ומה הייתם ממליצים.",
               "answer": 12,
-              "label": "כמה מנות",
-              "solution": "SELECT *\nFROM menu_items\nWHERE NOT category_id = 5\n  AND price < 20",
-              "note": "12 מנות בלבד, פחות ממספר המסעדות. ברוב המסעדות לא יהיה מה להציע. תשובה טובה משווה את 12 למספר המסעדות ומנמקת המלצה, למשל להעלות את הסף או לכלול שתייה."
+              "label": "כמה מנות"
             },
             {
               "title": "קמפיין טבעוני",
@@ -720,8 +682,6 @@ window.COURSE = {
                 89,
                 74
               ],
-              "solution": "SELECT *\nFROM menu_items\nWHERE is_vegan = 1\n  AND is_available = 1\n\nSELECT *\nFROM menu_items\nWHERE is_vegan = 1\n  AND is_available = 1\n  AND price < 40",
-              "note": "89 מנות טבעוניות זמינות, ו־74 מהן עולות פחות מ־40 שקלים. יש מבחר גדול. תשובה טובה נותנת את שני המספרים ומנמקת אם יש מספיק מבחר.",
               "fields": [
                 "טבעוניות זמינות",
                 "מתוכן פחות מ־40 שקלים"
@@ -737,8 +697,6 @@ window.COURSE = {
                 23
               ],
               "hint": "שלושה תנאים: הקופון, שעת ההתחלה ושעת הסיום.",
-              "solution": "SELECT *\nFROM orders\nWHERE coupon_id = 5\n\nSELECT *\nFROM orders\nWHERE coupon_id = 5\n  AND order_time >= '12:00'\n  AND order_time < '15:00'",
-              "note": "23 מתוך 25 שימושים היו בצהריים. רוב השימושים היו בשעות שהקופון מיועד להן. זה לא מוכיח שהקופון הוסיף הזמנות שלא היו מגיעות בלעדיו. תשובה טובה נותנת את שני המספרים, ומבחינה בין \"משתמשים בו בצהריים\" לבין \"הוא הגדיל את ההזמנות בצהריים\".",
               "fields": [
                 "כל השימושים",
                 "בצהריים"
@@ -755,8 +713,6 @@ window.COURSE = {
                 597,
                 44
               ],
-              "solution": "SELECT *\nFROM orders\nWHERE payment_method_id = 5\n\nSELECT *\nFROM orders\nWHERE payment_method_id = 5\n  AND order_status = 'Cancelled'\n\nSELECT *\nFROM orders\nWHERE payment_method_id = 1\n\nSELECT *\nFROM orders\nWHERE payment_method_id = 1\n  AND order_status = 'Cancelled'",
-              "note": "במזומן: 0 ביטולים מתוך 58. באשראי: 44 מתוך 597, כ־7%. הנתונים לא תומכים בהנחה של הכספים. תשובה טובה משווה אחוזים, וקובעת שהנתונים לא תומכים בחיוב תשלום מראש בנימוק של ביטולים.",
               "fields": [
                 "מזומן",
                 "מזומן שבוטלו",
@@ -774,8 +730,6 @@ window.COURSE = {
                 51,
                 690
               ],
-              "solution": "SELECT *\nFROM orders\nWHERE delivery_minutes > 50\n\nSELECT *\nFROM orders\nWHERE delivery_minutes > 50\n  AND tip > 0\n\nSELECT *\nFROM orders\nWHERE tip > 0",
-              "note": "משלוחים איטיים: 51 מתוך 85 קיבלו טיפ, 60%. כל המשלוחים: 690 מתוך 1071, 64%. במשלוחים האיטיים שיעור קבלת הטיפ מעט נמוך יותר. ההבדל קטן, וההשוואה לבדה לא מוכיחה שהאיחור גורם לכך. נבדקה רק קבלת טיפ, לא גובה הטיפ. תשובה טובה משווה בין שני האחוזים, מציינת את הכיוון ואת גודל ההבדל, ונזהרת מלהסיק סיבה.",
               "fields": [
                 "משלוחים איטיים",
                 "איטיים עם טיפ",
@@ -883,9 +837,7 @@ window.COURSE = {
               "task": "מצאו את כל המנות בטבלת `menu_items` שהמחיר שלהן בין 50 ל־60 שקלים, כולל 50 וכולל 60. חשבו בלי שאילתה נוספת: מספר השורות בתוצאה חלקי 207.",
               "explain": "כמה מנות יושפעו מההנחה, ואיזה אחוז הן מכל 207 המנות בתפריט. האם לדעתכם זו החלטה גדולה או קטנה?",
               "answer": 28,
-              "label": "כמה מנות",
-              "solution": "SELECT *\nFROM menu_items\nWHERE price BETWEEN 50 AND 60",
-              "note": "28 מנות, בערך 14% מהתפריט: בערך מנה אחת מכל שבע. תשובה טובה מציינת גם את המספר וגם את החלק היחסי, ומנמקת עמדה."
+              "label": "כמה מנות"
             },
             {
               "title": "מתי לתגבר שליחים",
@@ -896,8 +848,6 @@ window.COURSE = {
                 274,
                 406
               ],
-              "solution": "SELECT *\nFROM orders\nWHERE order_time BETWEEN '12:00' AND '14:00'\n\nSELECT *\nFROM orders\nWHERE order_time BETWEEN '19:00' AND '21:00'",
-              "note": "274 בצהריים, 406 בערב. בערב נכנסות בערך פי 1.5 הזמנות, ולכן כדאי לתגבר בערב. תשובה טובה משווה בין שני הטווחים במספרים ומנמקת את ההמלצה.",
               "fields": [
                 "צהריים",
                 "ערב"
@@ -913,8 +863,6 @@ window.COURSE = {
                 259
               ],
               "hint": "הזמנה שהשתמשו בה בקופון היא הזמנה שבה `coupon_id` לא ריק.",
-              "solution": "SELECT *\nFROM orders\nWHERE coupon_id IN (2, 3)\n\nSELECT *\nFROM orders\nWHERE coupon_id IS NOT NULL",
-              "note": "19 מתוך 259, כ־7% מהשימושים בקופונים. קופוני הקיץ היו חלק קטן מהשימושים בקופונים. כדי לקבוע אם הצליחו, צריך גם לדעת כמה זמן היו בתוקף וכמה לקוחות נחשפו אליהם. תשובה טובה נותנת את האחוז, ומסייגת את המסקנה בגלל הנתונים החסרים. שימו לב: SUMMER26 בתוקף מ־1 ביוני 2026 עד 31 באוגוסט 2026, והנתונים נגמרים ב־30 ביוני. 3 השימושים בו הם משלושה שבועות בלבד, ו־16 השימושים ב־SUMMER15 הם מקיץ שלם. תלמיד שמציין את זה צודק, וזה סייג חשוב.",
               "fields": [
                 "קופוני קיץ",
                 "כל הקופונים"
@@ -930,8 +878,6 @@ window.COURSE = {
                 13
               ],
               "hint": "כדי שכל מסעדה תופיע פעם אחת: `DISTINCT` מפרק 4.",
-              "solution": "SELECT *\nFROM menu_items\nWHERE item_name LIKE '%Salad%'\n\nSELECT DISTINCT restaurant_id\nFROM menu_items\nWHERE item_name LIKE '%Salad%'",
-              "note": "13 מנות ב־13 מסעדות: בכל מסעדה שיש בה סלט יש סלט אחד בלבד. המסנן יציג מבחר רחב של מסעדות. תשובה טובה נותנת את שני המספרים ומנמקת אם המבחר מספיק.",
               "fields": [
                 "מנות",
                 "מסעדות"
@@ -947,8 +893,6 @@ window.COURSE = {
                 77,
                 83
               ],
-              "solution": "SELECT *\nFROM orders\nWHERE order_status = 'Cancelled'\n  AND order_date BETWEEN '20260201' AND '20260228'\n\nSELECT *\nFROM orders\nWHERE order_date BETWEEN '20260201' AND '20260228'\n\nSELECT *\nFROM orders\nWHERE order_date BETWEEN '20260301' AND '20260331'",
-              "note": "פברואר: 4 ביטולים מתוך 77 (כ־5%). מרץ: 5 מתוך 83 (כ־6%). ההבדל קטן, ולכן מרץ לא חריג. תשובה טובה משווה אחוזים ולא רק מספרים.",
               "fields": [
                 "ביטולים בפברואר",
                 "הזמנות בפברואר",
@@ -1125,9 +1069,7 @@ window.COURSE = {
               "task": "מטבלת `couriers` הציגו את `courier_id`, `first_name`, `last_name` ו־`hire_date` של השליחים שהתקבלו לעבודה מ־1 בינואר 2024, מהחדש לוותיק. חשבו בלי שאילתה נוספת: מספר השורות בתוצאה חלקי 25.",
               "explain": "כמה שליחים חדשים יש ואיזה אחוז הם מ־25 השליחים. מתי התקבל השליח החדש ביותר, ומתי זה שלפניו. מה הפער ביניהם אומר על הגיוס בחברה.",
               "answer": 5,
-              "label": "כמה שליחים",
-              "solution": "SELECT courier_id, first_name, last_name, hire_date\nFROM couriers\nWHERE hire_date >= '20240101'\nORDER BY hire_date DESC",
-              "note": "5 שליחים, 20% מהשליחים. החדש: Yonatan Biton, 2026-05-01. לפניו: Rana Segal, 2024-12-03. בין שני מועדי הקבלה האחרונים עברה כמעט שנה וחצי. זה נכון לגבי השליחים שרשומים בטבלה: שליח שהתקבל ועזב לא מופיע בה. תשובה טובה מציינת את המספר, את האחוז ואת הפער, ומסייגת שהטבלה כוללת רק את השליחים הנוכחיים."
+              "label": "כמה שליחים"
             },
             {
               "title": "הביקורות הגרועות ביותר",
@@ -1138,8 +1080,6 @@ window.COURSE = {
                 8,
                 1
               ],
-              "solution": "SELECT TOP 1 WITH TIES review_id, order_id, rating, review_text, review_date\nFROM reviews\nORDER BY rating",
-              "note": "הדירוג הנמוך הוא 2, ואין אף ביקורת עם 1. 8 ביקורות מתוך 470, פחות מ־2%. רק באחת יש טקסט: Arrived cold. משבע האחרות אי אפשר ללמוד כלום. תשובה טובה נותנת את שלושת המספרים ומציעה דרך לקבל יותר מידע מלקוחות שנותנים דירוג נמוך.",
               "fields": [
                 "כמה ביקורות",
                 "בכמה מהן יש טקסט"
@@ -1155,8 +1095,6 @@ window.COURSE = {
                 22,
                 6
               ],
-              "solution": "SELECT TOP 3 WITH TIES restaurant_id, restaurant_name, avg_prep_minutes\nFROM restaurants\nORDER BY avg_prep_minutes DESC\n\nSELECT TOP 1 restaurant_name, avg_prep_minutes\nFROM restaurants\nORDER BY avg_prep_minutes",
-              "note": "4 מסעדות: Spice Route (22), Masala Express (21), Nonna Rina ו־Tokyo Gate (20 שתיהן). בלי `WITH TIES` אחת מהשתיים האחרונות הייתה נחתכת. הקצרה: Gelato Gardens, 6 דקות. 22 הוא בערך פי 3.7 מ־6. תשובה טובה מסבירה למה מזמינים ארבע ולא שלוש, ומשווה את זמני ההכנה למסעדה המהירה ביותר.",
               "fields": [
                 "כמה מסעדות בתוצאה (מספר השורות)",
                 "זמן ההכנה הארוך",
@@ -1174,8 +1112,6 @@ window.COURSE = {
                 0
               ],
               "hint": "קטגוריות: 1 ראשונות, 2 עיקריות, 3 תוספות, 4 קינוחים, 5 משקאות.",
-              "solution": "SELECT TOP 5 WITH TIES item_name, price, category_id\nFROM menu_items\nORDER BY price\n\nSELECT TOP 5 WITH TIES item_name, price, category_id\nFROM menu_items\nWHERE category_id <> 5\nORDER BY price",
-              "note": "ברשימה הראשונה 6 שורות (ארבע מנות עולות 11.00), וכולן משקאות: Cola, Turkish Coffee, Green Tea. בשנייה 6 שורות של תוספות וראשונות: אורז, Miso Soup. אף אחת מהן לא ארוחה. תשובה טובה מזהה שאין ברשימות מנה עיקרית, ומנמקת המלצה, למשל לבנות את הקמפיין על מנות עיקריות או לשנות את הרעיון.",
               "fields": [
                 "שורות בשאילתה הראשונה",
                 "שורות בשנייה",
@@ -1193,8 +1129,6 @@ window.COURSE = {
                 10
               ],
               "hint": "`TOP 1 WITH TIES`. ומה יקרה במיון עולה אם לא מסננים את ה־`NULL`?",
-              "solution": "SELECT TOP 1 WITH TIES order_id, courier_id, delivery_minutes, tip\nFROM orders\nWHERE delivery_minutes IS NOT NULL\nORDER BY delivery_minutes",
-              "note": "17 משלוחים של 12 דקות, של 12 שליחים שונים, ולכן אין זוכה אחד. ב־10 מהם הטיפ הוא 0: משלוח מהיר לא מבטיח טיפ. בלי ה־`WHERE` מתקבלות 179 שורות של `NULL`, כי `NULL` ראשון במיון עולה. שימו לב: אם מוסיפים `tip` ל־`ORDER BY`, התיקו נבדק על שתי העמודות ומתקבלות רק 10 שורות. תשובה טובה מזהה שאין זוכה אחד ומציעה כלל אחר לפרס, למשל לכל ה־17 או לפי מדד אחר.",
               "fields": [
                 "זמן המשלוח הקצר ביותר (דקות)",
                 "כמה משלוחים בזמן הזה (מספר השורות)",
@@ -1334,9 +1268,7 @@ window.COURSE = {
               "task": "מטבלת `restaurants` הציגו שלוש עמודות:<br>1. `restaurant_name`: שם המסעדה.<br>2. עמודה בשם `name_length`: מספר התווים בשם.<br>3. עמודה בשם `watch_name`: 12 התווים הראשונים של השם, כפי שהשם יופיע בשעון.<br>הציגו רק מסעדות שהשם שלהן ארוך מ־12 תווים, ומיינו מהשם הארוך לקצר. חשבו בלי שאילתה נוספת: מספר השורות בתוצאה חלקי 30.",
               "explain": "כמה מסעדות ייחתכו ואיזה אחוז הן מ־30 המסעדות. תנו שתי דוגמאות לשם חתוך, והאם השליח עדיין יזהה את המסעדה. מה אתם ממליצים לצוות.",
               "answer": 11,
-              "label": "כמה מסעדות (מספר השורות)",
-              "solution": "SELECT restaurant_name,\n       LEN(restaurant_name) AS name_length,\n       LEFT(restaurant_name, 12) AS watch_name\nFROM restaurants\nWHERE LEN(restaurant_name) > 12\nORDER BY name_length DESC",
-              "note": "11 מתוך 30, יותר משליש. למשל Lev Hamifratz Diner הופך ל־Lev Hamifrat, ו־Kaze Sushi Bar ל־Kaze Sushi B. רוב השמות עדיין מזוהים, אבל נראים שבורים. תשובה טובה נותנת את המספר, את האחוז ושתי דוגמאות, ומציעה פתרון, למשל שם קצר לשעון."
+              "label": "כמה מסעדות (מספר השורות)"
             },
             {
               "title": "הנחה של 15% ומחיר עגול",
@@ -1348,8 +1280,6 @@ window.COURSE = {
                 108
               ],
               "hint": "`ROUND` עם 0 מעגל לשקל שלם. כתבו את החישוב גם ב־`WHERE`, לא את הכינוי.",
-              "solution": "SELECT item_name, price\nFROM menu_items\nWHERE price < 30\n\nSELECT item_name, price,\n       ROUND(price * 0.85, 0) AS new_price\nFROM menu_items\nWHERE ROUND(price * 0.85, 0) < 30",
-              "note": "86 מנות היום (כ־42%), 108 אחרי ההנחה (כ־52%): 22 מנות נוספות, ויותר ממחצית התפריט נכנס למסנן. בלי `ROUND` מתקבלות 114: מנה של 35 שקלים יוצאת 29.75 ונכנסת, ועם עיגול היא 30 ולא נכנסת. תשובה טובה משווה אחוזים ולא רק מספרים.",
               "fields": [
                 "היום",
                 "אחרי ההנחה"
@@ -1365,8 +1295,6 @@ window.COURSE = {
                 72
               ],
               "hint": "בלי `ISNULL` הסכום יוצא `NULL` בכל השורות האלה.",
-              "solution": "SELECT order_id, order_status, courier_id, delivery_fee, tip,\n       delivery_fee + ISNULL(tip, 0) AS courier_total\nFROM orders\nWHERE delivery_minutes IS NULL\nORDER BY courier_total DESC\n\nSELECT order_id, order_status, courier_id,\n       delivery_fee + ISNULL(tip, 0) AS courier_total\nFROM orders\nWHERE delivery_minutes IS NULL\n  AND delivery_fee + ISNULL(tip, 0) > 0",
-              "note": "179 הזמנות בלי משלוח. ב־72 מהן, כולן Cancelled, הנוסחה נותנת 9.90 עד 17.90, כי דמי המשלוח רשומים גם בהזמנה שבוטלה. ב־107 האחרות (Picked Up) הסכום 0. תשובה טובה מזהה שהנוסחה נותנת סכום גם בהזמנות שאין בהן שליח, וממליצה להוסיף לנוסחה תנאי זכאות, למשל רק הזמנות שנמסרו. בכל 179 ההזמנות `courier_id` ריק.",
               "fields": [
                 "הזמנות בלי משלוח",
                 "מהן עם סכום גדול מ־0"
@@ -1381,8 +1309,6 @@ window.COURSE = {
                 177,
                 9
               ],
-              "solution": "SELECT order_id, delivery_minutes,\n       ROUND(delivery_minutes / 60.0, 2) AS hours\nFROM orders\nWHERE ROUND(delivery_minutes / 60.0, 2) > 0.75\n\nSELECT order_id, delivery_minutes,\n       ROUND(delivery_minutes / 60, 2) AS hours\nFROM orders\nWHERE ROUND(delivery_minutes / 60, 2) > 0.75",
-              "note": "177 משלוחים, כ־17%: בערך אחד מכל שישה. עם / 60 החלוקה שלמה: כל משלוח מתחת ל־60 דקות נותן 0, ורק 9 המשלוחים של 60 דקות ומעלה נותנים 1. הדוח טעה פי 20 בגלל חלוקה שלמה. גם `delivery_minutes > 45` מחזיר 177. תשובה טובה נותנת את המספר הנכון ומסבירה במילים פשוטות למה הדוח הראה 9.",
               "fields": [
                 "שורות בשאילתה 1 (חלוקה ב־60.0)",
                 "שורות בשאילתה 2 (חלוקה ב־60)"
@@ -1502,8 +1428,6 @@ window.COURSE = {
                 345,
                 470
               ],
-              "solution": "SELECT order_id, order_date\nFROM orders\nWHERE YEAR(order_date) = 2025\n  AND MONTH(order_date) <= 6\n\nSELECT order_id, order_date\nFROM orders\nWHERE YEAR(order_date) = 2026\n  AND MONTH(order_date) <= 6",
-              "note": "345 מול 470: 125 הזמנות יותר, גידול של כ־36%. משווים תקופות באותו אורך ובאותה עונה, ולכן ההשוואה הוגנת. תשובה טובה נותנת את השינוי במספר ובאחוזים, ומנמקת המלצה לגבי גיוס.",
               "fields": [
                 "חצי ראשון 2025",
                 "חצי ראשון 2026"
@@ -1520,8 +1444,6 @@ window.COURSE = {
                 2
               ],
               "hint": "לתאריך האחרון: `TOP 1` עם `ORDER BY` מפרק 8.",
-              "solution": "SELECT customer_id, join_date\nFROM customers\nWHERE YEAR(join_date) = 2025\n  AND MONTH(join_date) <= 6\n\nSELECT customer_id, join_date\nFROM customers\nWHERE YEAR(join_date) = 2025\n  AND MONTH(join_date) >= 7\n\nSELECT customer_id, join_date\nFROM customers\nWHERE YEAR(join_date) = 2026\n  AND MONTH(join_date) <= 6\n\nSELECT TOP 1 customer_id, join_date\nFROM customers\nORDER BY join_date DESC",
-              "note": "36, 18, 2: ירידה חדה, מ־36 ל־18, ואז ל־2 בלבד. הלקוח האחרון (110) הצטרף ב־2026-01-04, ומאז, כמעט חצי שנה, אין הצטרפויות. באותו זמן ההזמנות גדלו ב־36%: הלקוחות הקיימים מזמינים יותר, אבל אין חדשים. תשובה טובה מזהה את הירידה החדה וממליצה לבדוק את הסיבה: תקלה בהרשמה, שינוי בשיווק או בעיה בנתונים.",
               "fields": [
                 "חצי ראשון 2025",
                 "חצי שני 2025",
@@ -1540,8 +1462,6 @@ window.COURSE = {
                 79
               ],
               "hint": "את השימושים בחודש מחשבים במחשבון או בעמודה מחושבת. זכרו 1.0 כדי לא לקבל חלוקה שלמה.",
-              "solution": "SELECT coupon_code,\n       DATEDIFF(DAY, valid_from, valid_to) AS valid_days\nFROM coupons\nWHERE coupon_id IN (6, 7)\n\nSELECT order_id, coupon_id\nFROM orders\nWHERE coupon_id = 6\n\nSELECT order_id, coupon_id\nFROM orders\nWHERE coupon_id = 7",
-              "note": "FRIDAY25: 14 הזמנות ב־91 ימים, בערך 4.6 בחודש. STUDENT12: 79 הזמנות ב־302 ימים, בערך 7.8 בחודש. הקופון עם ההנחה הקטנה יותר שימש בערך פי 1.7 יותר. תשובה טובה משווה לפי שימושים בחודש ולא לפי המספר הכולל, ומנמקת את הבחירה.",
               "fields": [
                 "ימים FRIDAY25",
                 "הזמנות FRIDAY25",
@@ -1559,8 +1479,6 @@ window.COURSE = {
                 3
               ],
               "hint": "`DATEDIFF` סופר כמה פעמים עברנו את 1 בינואר, לא כמה שנים שלמות עברו.",
-              "solution": "SELECT courier_id, first_name, last_name, hire_date\nFROM couriers\nWHERE DATEDIFF(YEAR, hire_date, '20260630') >= 5\n\nSELECT courier_id, first_name, last_name, hire_date\nFROM couriers\nWHERE hire_date <= DATEADD(YEAR, -5, '20260630')",
-              "note": "`DATEDIFF` מחזיר 8: כל מי שהתקבל ב־2021. אבל רק 3 התקבלו עד 30 ביוני 2021 (Yael Mizrahi, Adi Avraham, Rivka Ben David). חמשת האחרים יגיעו ל־5 שנים רק בהמשך השנה. בתקציב צריך 3. תשובה טובה מסבירה את ההבדל בין המספרים בלי מונחי SQL, וקובעת איזה מספר נכנס לתקציב.",
               "fields": [
                 "לפי DATEDIFF",
                 "לפי DATEADD"
@@ -1573,9 +1491,7 @@ window.COURSE = {
               "explain": "כמה לקוחות בקהל היעד, ואיזה אחוז הם מ־160 הלקוחות. האם הקהל גדול מספיק לקמפיין קבוע, ומה עוד הייתם רוצים לבדוק לפני שמחליטים.",
               "answer": 29,
               "label": "כמה לקוחות",
-              "hint": "`DATEADD(YEAR, -26, '20260630')` הוא 30 ביוני 2000. מי שנולד בדיוק בו כבר בן 26.",
-              "solution": "SELECT customer_id, first_name, birth_date\nFROM customers\nWHERE birth_date > DATEADD(YEAR, -26, '20260630')\n  AND birth_date <= DATEADD(YEAR, -18, '20260630')\nORDER BY birth_date DESC",
-              "note": "29 לקוחות, כ־18%: כמעט אחד מכל חמישה. אין לקוחות מתחת לגיל 18 (הצעיר נולד ב־2007-08-07). עם `DATEDIFF(YEAR, birth_date, '20260630') BETWEEN 18 AND 25` מתקבלות 28, כי `DATEDIFF` סופר גבולות. תשובה טובה מציינת את החלק היחסי ומציעה מה עוד לבדוק, למשל כמה הזמנות הם עושים."
+              "hint": "`DATEADD(YEAR, -26, '20260630')` הוא 30 ביוני 2000. מי שנולד בדיוק בו כבר בן 26."
             }
           ]
         }
@@ -1724,8 +1640,6 @@ window.COURSE = {
                 8.95
               ],
               "hint": "בדקו מה קיבלו ההזמנות שבהן `delivery_minutes` הוא `NULL`. האם זה נכון עסקית?",
-              "solution": "SELECT order_id,\n       delivery_minutes,\n       delivery_fee,\n       CASE\n           WHEN delivery_minutes > 60 THEN delivery_fee\n           WHEN delivery_minutes > 50 THEN delivery_fee / 2\n           ELSE 0\n       END AS refund\nFROM orders\nORDER BY delivery_minutes DESC",
-              "note": "הזמנה 260: 61 דקות, החזר מלא של 17.90. הזמנה 302: 60 דקות, חצי החזר של 8.95. דמי המשלוח זהים, ודקה אחת מכפילה את ההחזר. תשובה טובה מזהה שדקה אחת מכפילה את ההחזר, ומציעה כלל אחר עם נימוק. ההזמנות בלי משלוח נופלות ל־`ELSE` ומקבלות 0, וכאן זה נכון. לעיון: 6 החזרים מלאים ו־79 חצאי החזר.",
               "fields": [
                 "ההחזר בהזמנה 260 (בשקלים)",
                 "ההחזר בהזמנה 302 (בשקלים)"
@@ -1738,9 +1652,7 @@ window.COURSE = {
               "explain": "מה כתוב בביקורת הראשונה בתור, ומה הייתם עונים ללקוח? אחר כך הסתכלו על הטקסטים בקבוצת `Thank you`: חוזרים בה כמה משפטים קבועים, ואחד מהם הוא בעצם תלונה. מהו? מה זה אומר על כלל שקובע לפי הדירוג בלבד?",
               "answer": 447,
               "label": "מספר הביקורת הראשונה בתור",
-              "hint": "את `priority` כותבים ב־`CASE` נוסף, עם אותם תנאים כמו ב־`action`. סדר ה־`WHEN` חשוב: מה צריך לבדוק ראשון?",
-              "solution": "SELECT review_id,\n       rating,\n       review_text,\n       CASE\n           WHEN review_text IS NULL THEN 'No action'\n           WHEN rating <= 3 THEN 'Reply'\n           ELSE 'Thank you'\n       END AS action,\n       CASE\n           WHEN review_text IS NULL THEN 3\n           WHEN rating <= 3 THEN 1\n           ELSE 2\n       END AS priority\nFROM reviews\nORDER BY priority, rating",
-              "note": "447: דירוג 2, 'Arrived cold'. היא הביקורת היחידה עם דירוג 2 ועם טקסט. בקבוצת 'Reply' רוב הטקסטים הם 'OK, nothing special' ו־'Portions were small'. בקבוצת 'Thank you' יש 34 ביקורות 'Good food, a bit slow', כולן בדירוג 4: תלונה על זמן המשלוח שהכלל לפי דירוג מפספס. תשובה טובה מזהה את הביקורת הראשונה ואת הטקסט \"Good food, a bit slow\" כתלונה בקבוצת `Thank you`, ומסיקה שכלל לפי דירוג בלבד מפספס תלונות. אם בודקים את הדירוג לפני `NULL`, ביקורות בלי טקסט מקבלות 'Reply' או 'Thank you' בטעות."
+              "hint": "את `priority` כותבים ב־`CASE` נוסף, עם אותם תנאים כמו ב־`action`. סדר ה־`WHEN` חשוב: מה צריך לבדוק ראשון?"
             },
             {
               "title": "שליחים שמתקרבים לרמת מענק",
@@ -1749,9 +1661,7 @@ window.COURSE = {
               "explain": "אילו שליחים יעלו רמה בחצי השנה הקרובה (עד 6 חודשים), ומה תגידו למשאבי אנוש?",
               "answer": 2,
               "label": "הערך הקטן ביותר ב־months_to_next",
-              "hint": "את החישוב של `DATEDIFF` אפשר לכתוב גם בתוך `WHEN` ובתוך `THEN`.",
-              "solution": "SELECT courier_id,\n       first_name,\n       last_name,\n       hire_date,\n       DATEDIFF(MONTH, hire_date, '20260630') AS tenure_months,\n       CASE\n           WHEN DATEDIFF(MONTH, hire_date, '20260630') < 24\n               THEN 24 - DATEDIFF(MONTH, hire_date, '20260630')\n           ELSE 48 - DATEDIFF(MONTH, hire_date, '20260630')\n       END AS months_to_next\nFROM couriers\nWHERE DATEDIFF(MONTH, hire_date, '20260630') < 48\nORDER BY months_to_next",
-              "note": "14 שליחים בתוצאה (11 כבר ברמה של 500). הערך הקטן ביותר הוא 2: שליחה 6 (Noa, 22 חודשים, תעלה ל־250) ושליחה 14 (Orly, 46 חודשים, תעלה ל־500). בחצי השנה הקרובה יעלו רמה 6 שליחים: 6, 14 (2 חודשים), 1, 13 (3), 24 (5) ו־16 (6). שלושה מהם (6, 1, 16) יעברו מ־0 ל־250, ושלושה (14, 13, 24) מ־250 ל־500. כל השלמה של שלב מזכה במענק חד־פעמי של 250 שקלים, ולכן צריך להכין 1500 שקלים. תשובה טובה מציינת את השמות, את מועד ההגעה לכל שלב ואת התקציב הנדרש. למורה: בפרק 10 ראינו ש־`DATEDIFF` סופר גבולות ולא תקופות שלמות. כאן זה קירוב מספיק, ובנתונים האלה הוא לא משנה את התוצאה."
+              "hint": "את החישוב של `DATEDIFF` אפשר לכתוב גם בתוך `WHEN` ובתוך `THEN`."
             }
           ]
         }
@@ -1890,8 +1800,6 @@ window.COURSE = {
                 34.78
               ],
               "hint": "`delivery_minutes` הוא `INT`. מה יחזיר `AVG` שלו?",
-              "solution": "SELECT CAST(AVG(delivery_minutes * 1.0) AS DECIMAL(5,2)) AS avg_2025\nFROM orders\nWHERE YEAR(order_date) = 2025\n\nSELECT CAST(AVG(delivery_minutes * 1.0) AS DECIMAL(5,2)) AS avg_2026\nFROM orders\nWHERE YEAR(order_date) = 2026",
-              "note": "35.25 דקות ב־2025, ו־34.78 ב־2026: שיפור של פחות מחצי דקה. בלי * 1.0 מתקבלים 35 ו־34, ונראה כאילו היה שיפור של דקה שלמה. תשובה טובה מציינת שהשיפור קטן, ושהשוואת ממוצעים לבדה לא מספיקה להחלטה: כדאי לבדוק גם עונתיות (2026 כוללת רק ינואר עד יוני), עלות ותועלות נוספות.",
               "fields": [
                 "2025",
                 "2026"
@@ -1906,8 +1814,6 @@ window.COURSE = {
                 3044.9,
                 14747.9
               ],
-              "solution": "SELECT SUM(delivery_fee) AS coupon_fees\nFROM orders\nWHERE coupon_id IS NOT NULL\n  AND order_status <> 'Cancelled'\n\nSELECT SUM(delivery_fee) AS all_fees\nFROM orders\nWHERE order_status <> 'Cancelled'",
-              "note": "3044.90 מתוך 14747.90, כ־21%. הזמנות שבוטלו לא נכללות, כי דמי המשלוח שלהן נשמרים בטבלה (פרק 9), אבל הזמנה שבוטלה לא מכניסה כסף. בלי הסינון מתקבלים 3179.90 ו־15710.70. ההצעה תוותר על כחמישית מהכנסות דמי המשלוח, נוסף על ההנחה של הקופון עצמו. תשובה טובה מציינת את הסכום ואת החלק היחסי, ושוקלת אם המחיר מוצדק. גם המלצה בעד ההצעה תקינה, אם היא מנומקת, למשל בציפייה להזמנות נוספות.",
               "fields": [
                 "עם קופון",
                 "כל ההזמנות שלא בוטלו"
@@ -1923,8 +1829,6 @@ window.COURSE = {
                 51.94,
                 60.36
               ],
-              "solution": "SELECT COUNT(*) AS vegan_items,\n       CAST(AVG(price) AS DECIMAL(5,2)) AS avg_vegan_price\nFROM menu_items\nWHERE is_vegan = 1\n  AND category_id = 2\n\nSELECT COUNT(*) AS other_items,\n       CAST(AVG(price) AS DECIMAL(5,2)) AS avg_other_price\nFROM menu_items\nWHERE is_vegan = 0\n  AND category_id = 2",
-              "note": "17 מנות עיקריות טבעוניות במחיר ממוצע 51.94, ו־53 לא טבעוניות במחיר ממוצע 60.36: מנה עיקרית טבעונית זולה בכ־8.4 שקלים, כ־14%. המסר נכון לגבי מנות עיקריות. למורה: בכל התפריט הפער הוא 28.38 מול 45.68 (כ־38%), כי 74 מתוך 96 המנות הטבעוניות הן ראשונות, תוספות ומשקאות (23 מתוך 30 המשקאות טבעוניים). גם בראשונות ועיקריות יחד הפער כ־32%, מאותה סיבה. זה דיון טוב לכיתה: למה משווים בתוך אותו סוג מנה. תשובה טובה מנסחת את המסר לגבי מנות עיקריות בלבד. בקינוחים הטבעוני דווקא קצת יקר יותר (32.20 מול 31.08).",
               "fields": [
                 "ממוצע טבעוני",
                 "ממוצע לא טבעוני"
@@ -1941,8 +1845,6 @@ window.COURSE = {
                 11.94
               ],
               "hint": "נסו להוסיף `ELSE 0` לביטוי של עמודה 3. מה קורה לממוצע, ולמה?",
-              "solution": "SELECT COUNT(tip) AS deliveries,\n       SUM(CASE WHEN tip > 0 THEN 1 ELSE 0 END) AS tipped,\n       CAST(AVG(CASE WHEN tip > 0 THEN tip END) AS DECIMAL(5,2)) AS avg_tip_when_tipped\nFROM orders",
-              "note": "690 מתוך 1071 משלוחים קיבלו טיפ, כ־64%. כשנותנים טיפ, הממוצע הוא 11.94 שקלים. אפשר גם בשתי שאילתות: השנייה עם `WHERE tip > 0`. תשובה טובה נותנת את האחוז ואת הממוצע, ומציעה סכומים לכפתורים שמבוססים על הממוצע. עם `ELSE 0` הממוצע יורד ל־6.59, כי הוא מחושב על כל 1250 ההזמנות, כולל אפסים.",
               "fields": [
                 "משלוחים",
                 "משלוחים עם טיפ",
@@ -1958,8 +1860,6 @@ window.COURSE = {
                 1250,
                 58
               ],
-              "solution": "SELECT COUNT(*) AS all_orders,\n       SUM(CASE WHEN payment_method_id = 5 THEN 1 ELSE 0 END) AS cash_orders\nFROM orders",
-              "note": "58 מתוך 1250 הזמנות, כ־4.6%: פחות מהזמנה אחת מכל עשרים. אפשר גם בשתי שאילתות עם `WHERE`. תשובה טובה נותנת את המספר ואת האחוז, ומסייגת שחלק קטן מההזמנות לא אומר בהכרח פגיעה קטנה בלקוחות. 58 ההזמנות במזומן שייכות ל־33 לקוחות. פרט מעניין למורה: אף הזמנה במזומן לא בוטלה.",
               "fields": [
                 "כל ההזמנות",
                 "במזומן"
@@ -2083,8 +1983,6 @@ window.COURSE = {
                 345
               ],
               "hint": "קודם `WHERE` על החודש, אחר כך `GROUP BY` על השנה.",
-              "solution": "SELECT YEAR(order_date) AS order_year,\n       COUNT(*) AS order_count\nFROM orders\nWHERE MONTH(order_date) <= 6\nGROUP BY YEAR(order_date)",
-              "note": "345 הזמנות בחצי הראשון של 2025, ו־470 בחצי הראשון של 2026: עלייה של כ־36%. הנתונים של 2026 נגמרים ב־30 ביוני, ולכן 780 מול 470 משווה שנה שלמה לחצי שנה. תשובה טובה מסבירה למה 780 מול 470 מטעה, ומסיקה שהירידה לכאורה במספר השנתי היא לא נימוק לקיצוץ. 470 כבר מופיע ברקע, ולכן התיבה בודקת רק את 345.",
               "fields": [
                 "הזמנות בחצי הראשון של 2025"
               ]
@@ -2100,8 +1998,6 @@ window.COURSE = {
                 54,
                 2
               ],
-              "solution": "SELECT YEAR(join_date) AS join_year,\n       COUNT(*) AS new_customers\nFROM customers\nGROUP BY YEAR(join_date)\nORDER BY join_year",
-              "note": "2023: 49, 2024: 55, 2025: 54, 2026: 2. גם בחצי שנה היינו מצפים לכ־27 לקוחות חדשים, והגיעו רק 2. יחד עם השאלה \"האם העסק ירד ב־2026?\": ההזמנות גדלו, אבל כמעט בלי לקוחות חדשים, כלומר הגידול מגיע מלקוחות קיימים. תשובה טובה מזהה שגם בחצי שנה המספר נמוך מאוד, וממליצה לברר את הסיבה לפני שמחליטים על תקציב: אם הבעיה היא תקלה בהרשמה, הגדלת התקציב לא תעזור.",
               "fields": [
                 "2023",
                 "2024",
@@ -2121,8 +2017,6 @@ window.COURSE = {
                 35.22
               ],
               "hint": "`delivery_minutes` הוא `INT`. זוכרים מה `AVG` עושה לו?",
-              "solution": "SELECT delivery_fee,\n       COUNT(*) AS deliveries,\n       CAST(AVG(delivery_minutes * 1.0) AS DECIMAL(5,2)) AS avg_minutes\nFROM orders\nWHERE order_status = 'Delivered'\nGROUP BY delivery_fee\nORDER BY delivery_fee",
-              "note": "9.90: 34.98 דקות (291 משלוחים). 12.90: 35.19 (269). 14.90: 34.89 (250). 17.90: 35.22 (261). כל המדרגות סביב 35 דקות: אין עלייה עקבית בזמן המשלוח הממוצע ככל שדמי המשלוח גבוהים יותר. בלי * 1.0 מתקבלים 34, 35, 34, 35. בלי `WHERE` מופיעה גם שורה של 0.00, ההזמנות שנאספו, עם ממוצע `NULL`. תשובה טובה מציינת שאין עלייה עקבית בזמן לפי המחיר, וממליצה לבדוק לפי מה נקבעים דמי המשלוח.",
               "fields": [
                 "זמן ממוצע ב־9.90",
                 "זמן ממוצע ב־12.90",
@@ -2142,8 +2036,6 @@ window.COURSE = {
                 145
               ],
               "hint": "את כל ה־`CASE` כותבים שוב ב־`GROUP BY`. אי אפשר לכתוב שם את השם שנתתם עם `AS`, כי `GROUP BY` רץ לפני `SELECT`, וכשהוא רץ השם עוד לא קיים. זה כמו `YEAR` בשקף \"קבוצה לפי חישוב\".",
-              "solution": "SELECT CASE\n           WHEN order_time < '15:00' THEN 'Lunch'\n           WHEN order_time < '18:00' THEN 'Afternoon'\n           WHEN order_time < '22:00' THEN 'Evening'\n           ELSE 'Late'\n       END AS day_part,\n       COUNT(*) AS order_count\nFROM orders\nGROUP BY CASE\n             WHEN order_time < '15:00' THEN 'Lunch'\n             WHEN order_time < '18:00' THEN 'Afternoon'\n             WHEN order_time < '22:00' THEN 'Evening'\n             ELSE 'Late'\n         END",
-              "note": "Lunch: 377, Afternoon: 40, Evening: 688, Late: 145. רק 40 הזמנות מתוך 1250, כ־3%, נכנסו אחר הצהריים. תשובה טובה מציינת את האחוז ומנמקת אם צריך משמרת אחר הצהריים. מידע נוסף למורה, שלא נראה בתוצאה: כל 40 ההזמנות נכנסו בין 17:00 ל־18:00, ובין 15:00 ל־17:00 אין אף הזמנה. אפשר להציע לתלמידים בדיקה לפי שעות.",
               "fields": [
                 "Lunch",
                 "Afternoon",
@@ -2164,8 +2056,6 @@ window.COURSE = {
                 0
               ],
               "hint": "נסו לכתוב `100` במקום `100.0`. מה קורה לאחוזים, ולמה?",
-              "solution": "SELECT payment_method_id,\n       COUNT(*) AS order_count,\n       SUM(CASE WHEN order_status = 'Cancelled' THEN 1 ELSE 0 END) AS cancelled,\n       100.0 * SUM(CASE WHEN order_status = 'Cancelled' THEN 1 ELSE 0 END) / COUNT(*) AS cancel_pct\nFROM orders\nGROUP BY payment_method_id\nORDER BY payment_method_id",
-              "note": "1 Credit Card: 44 מתוך 597 (7.4%). 2 Bit: 16 מתוך 351 (4.6%). 3 PayPal: 4 מתוך 97 (4.1%). 4 Apple Pay: 8 מתוך 147 (5.4%). 5 Cash: 0 מתוך 58. בכרטיס אשראי אחוז הביטולים הכי גבוה, ובמזומן אין ביטולים בכלל. תשובה טובה משווה אחוזים ולא מספרים, ומנמקת אם ההבדל מצדיק קוד אישור. עם `100` במקום `100.0` מתקבלים 7, 4, 4, 5 ו־0.",
               "fields": [
                 "ביטולים ב־Credit Card (1)",
                 "ביטולים ב־Bit (2)",
@@ -2347,8 +2237,6 @@ window.COURSE = {
                 0
               ],
               "hint": "`HAVING COUNT(*) > 1` משאיר רק קבוצות שיש בהן יותר משורה אחת.",
-              "solution": "SELECT first_name, last_name, COUNT(*) AS customer_count\nFROM customers\nGROUP BY first_name, last_name\nHAVING COUNT(*) > 1\n\nSELECT first_name, last_name, city_id, COUNT(*) AS customer_count\nFROM customers\nGROUP BY first_name, last_name, city_id\nHAVING COUNT(*) > 1\n\nSELECT first_name, last_name, birth_date, COUNT(*) AS customer_count\nFROM customers\nGROUP BY first_name, last_name, birth_date\nHAVING COUNT(*) > 1",
-              "note": "15 קבוצות עם אותו שם מלא, וכל אחת מהן זוג של שני לקוחות, למשל Moshe Azoulay (לקוחות 33 ו־105). כשמוסיפים את העיר נשארות 2 קבוצות: Inbar Haddad (52 ו־71) ו־Tamar Mansour (85 ו־97). כשמוסיפים את תאריך הלידה לא נשארת אף קבוצה. מספר השורות הוא מספר הקבוצות, לא מספר הלקוחות. השאילתות לא מוכיחות שאין כפילויות בכלל, למשל אם מישהו נרשם עם תאריך לידה שגוי, אבל לא נמצאה כפילות לפי שם ותאריך לידה. מידע נוסף למורה: גם המיילים והטלפונים של כל הזוגות שונים. תשובה טובה מסבירה למה המספר יורד, וממליצה לא לאחד או למחוק חשבונות לפי שם בלבד.",
               "fields": [
                 "שורות בשאילתה 1",
                 "שורות בשאילתה 2",
@@ -2362,9 +2250,7 @@ window.COURSE = {
               "explain": "כמה שליחים יישלחו להשתלמות, מי השליח עם הכי הרבה משלוחים איטיים וכמה היו לו. בדקו גם את שליח 15, שביצע הכי הרבה משלוחים בחברה (76): האם הוא ברשימה? מה זה אומר על הקשר בין כמות משלוחים לאיטיות?",
               "answer": 7,
               "label": "כמה שליחים",
-              "hint": "התנאי על הדקות הוא על כל משלוח. התנאי על הכמות הוא על הקבוצה.",
-              "solution": "SELECT courier_id, COUNT(*) AS slow_count\nFROM orders\nWHERE delivery_minutes > 45\nGROUP BY courier_id\nHAVING COUNT(*) >= 12\nORDER BY slow_count DESC",
-              "note": "7 שליחים: 18 (15 משלוחים איטיים), 21 ו־24 (14), 17 ו־22 (13), 11 ו־13 (12). שליח 15 לא ברשימה: מתוך 76 משלוחים רק 2 היו איטיים. כלומר, מי שעושה הכי הרבה משלוחים הוא לא בהכרח האיטי. תשובה טובה מציינת את 7, את שליח 18 ואת שליח 15, ומסייגת שגם מספר המשלוחים האיטיים תלוי בכמות המשלוחים: כדאי לבדוק גם את השיעור ואת מקור העיכוב."
+              "hint": "התנאי על הדקות הוא על כל משלוח. התנאי על הכמות הוא על הקבוצה."
             },
             {
               "title": "לקוחות שאוהבים לגוון",
@@ -2373,9 +2259,7 @@ window.COURSE = {
               "explain": "כמה לקוחות יקבלו את ההודעה, ומה טווח היחסים? תנו שתי דוגמאות. למה צריך גם את התנאי של לפחות 8 הזמנות? חשבו על לקוח שהזמין פעמיים, משתי מסעדות שונות. השוו ללקוחה 3, שהזמינה 50 פעמים מ־5 מסעדות בלבד: מה היחס שלה? מה ההבדל בין לקוח נאמן ללקוח שאוהב לגוון?",
               "answer": 11,
               "label": "כמה לקוחות",
-              "hint": "ב־`HAVING` כותבים שוב את החישוב המלא של היחס. השם `orders_per_restaurant` עוד לא קיים כש־`HAVING` רץ.",
-              "solution": "SELECT customer_id,\n       COUNT(*) AS order_count,\n       COUNT(DISTINCT restaurant_id) AS restaurant_count,\n       1.0 * COUNT(*) / COUNT(DISTINCT restaurant_id) AS orders_per_restaurant\nFROM orders\nGROUP BY customer_id\nHAVING COUNT(*) >= 8\n   AND 1.0 * COUNT(*) / COUNT(DISTINCT restaurant_id) <= 2\nORDER BY orders_per_restaurant",
-              "note": "11 לקוחות. היחס הנמוך ביותר הוא של לקוח 31: 8 הזמנות מ־6 מסעדות (1.33). לקוח 144 הזמין הכי הרבה, 23 הזמנות מ־13 מסעדות (1.77). חמישה לקוחות נמצאים בדיוק על היחס 2: 25, 47, 92, 103 ו־123. בלי התנאי של 8 הזמנות עוברים 103 מתוך 153 הלקוחות שהזמינו: רבים מהם הזמינו פעמים בודדות, כל פעם ממסעדה אחרת, ולכן היחס שלהם נמוך. יחס על מעט נתונים לא אומר הרבה. לקוחה 3: 50 הזמנות מ־5 מסעדות, יחס 10. היא נאמנה, לא מגוונת. מלכודות: עם `<` במקום `<=` מתקבלים 6, ובלי `1.0` מתקבלים 13. תשובה טובה נותנת את המספר, את טווח היחסים ושתי דוגמאות, מסבירה למה צריך מינימום הזמנות, ומבחינה בין לקוחה 3 ללקוחות שמגוונים."
+              "hint": "ב־`HAVING` כותבים שוב את החישוב המלא של היחס. השם `orders_per_restaurant` עוד לא קיים כש־`HAVING` רץ."
             }
           ]
         }
@@ -2492,9 +2376,7 @@ window.COURSE = {
                 "מספר המנות בתפריט הקטן ביותר",
                 "כמה מסעדות עם תפריט בגודל הזה"
               ],
-              "hint": "הקיבוץ הוא לפי שם המסעדה, שנמצא בטבלת `restaurants`. מה סופרים?",
-              "solution": "SELECT r.restaurant_name,\n       COUNT(*) AS item_count\nFROM menu_items AS m\nINNER JOIN restaurants AS r\n    ON m.restaurant_id = r.restaurant_id\nGROUP BY r.restaurant_name\nORDER BY item_count",
-              "note": "30 שורות. התפריט הקטן ביותר: 5 מנות, ב־Masala Express, Spice Route ו־Sweet Oasis. הגדול ביותר: 9 מנות (Desert Burger ו־Marina Pizza). כל המסעדות בין 5 ל־9 מנות, כך שההבדלים קטנים. מידע נוסף למורה: Masala Express ו־Spice Route הן גם המסעדות עם זמן ההכנה הארוך ביותר (פרק 5), ול־Masala Express יש 59 הזמנות, כלומר תפריט קטן לא בהכרח אומר מעט הזמנות. תשובה טובה מציינת את המספרים ואת שמות המסעדות, ומציעה לבדוק גם את מספר ההזמנות לפני שמחליטים."
+              "hint": "הקיבוץ הוא לפי שם המסעדה, שנמצא בטבלת `restaurants`. מה סופרים?"
             },
             {
               "title": "איזה רכב הכי מהיר",
@@ -2503,9 +2385,7 @@ window.COURSE = {
               "explain": "מה זמן המשלוח הממוצע של כל סוג רכב, מי המהיר ביותר ובכמה דקות הוא מהיר מהאיטי ביותר, ועל כמה משלוחים מבוסס כל ממוצע. איזה רכב הייתם קונים?",
               "answer": 31.7,
               "label": "הזמן הממוצע של הרכב המהיר ביותר",
-              "hint": "`delivery_minutes` היא `INT`. מה יקרה לממוצע בלי 1.0? `COUNT(*)` סופר את השורות בתוצאה של ה־`JOIN`. כל שורה כאן היא משלוח אחד עם השליח שלו, ולכן הוא סופר משלוחים. הזמנות בלי שליח לא מתחברות ב־`INNER JOIN`, ולכן לא נספרות.",
-              "solution": "SELECT co.vehicle_type,\n       COUNT(*) AS delivery_count,\n       ROUND(AVG(1.0 * o.delivery_minutes), 1) AS avg_minutes\nFROM orders AS o\nINNER JOIN couriers AS co\n    ON o.courier_id = co.courier_id\nGROUP BY co.vehicle_type\nORDER BY avg_minutes",
-              "note": "e-Bike: 31.7 דקות (236 משלוחים). Car: 35.5 (114). Scooter: 35.8 (662). Bicycle: 39.2 (59). אופניים חשמליים מהירים בכ־4 דקות מקטנוע ומרכב, ורכב וקטנוע כמעט זהים. בלי 1.0 הממוצעים נחתכים ל־31, 35, 35 ו־39, וההבדל בין רכב לקטנוע נעלם. תשובה טובה מזהה את e-Bike כמהיר ביותר בנתונים, מציינת שלאופניים רגילים יש רק 59 משלוחים, ומסייגת שהממוצעים לא מבודדים את השפעת הרכב מהשפעת העיר, המרחק והשליח."
+              "hint": "`delivery_minutes` היא `INT`. מה יקרה לממוצע בלי 1.0? `COUNT(*)` סופר את השורות בתוצאה של ה־`JOIN`. כל שורה כאן היא משלוח אחד עם השליח שלו, ולכן הוא סופר משלוחים. הזמנות בלי שליח לא מתחברות ב־`INNER JOIN`, ולכן לא נספרות."
             },
             {
               "title": "לקוחות שמזמינים מעיר אחרת",
@@ -2517,8 +2397,6 @@ window.COURSE = {
                 308
               ],
               "hint": "ב־`WHERE` אפשר להשוות עמודה מטבלה אחת לעמודה מטבלה אחרת.",
-              "solution": "SELECT COUNT(*) AS same_city\nFROM orders AS o\nINNER JOIN customers AS c\n    ON o.customer_id = c.customer_id\nINNER JOIN restaurants AS r\n    ON o.restaurant_id = r.restaurant_id\nWHERE c.city_id = r.city_id\n\nSELECT COUNT(*) AS other_city\nFROM orders AS o\nINNER JOIN customers AS c\n    ON o.customer_id = c.customer_id\nINNER JOIN restaurants AS r\n    ON o.restaurant_id = r.restaurant_id\nWHERE c.city_id <> r.city_id",
-              "note": "942 הזמנות מאותה עיר, ו־308 מעיר אחרת: כמעט רבע מההזמנות. השינוי היה פוגע בהזמנה אחת מכל ארבע. 942 ועוד 308 זה 1250. תשובה טובה נותנת את שני המספרים ואת האחוז, ומנמקת אם הפגיעה מצדיקה את השינוי.",
               "fields": [
                 "אותה עיר",
                 "עיר אחרת"
@@ -2534,8 +2412,6 @@ window.COURSE = {
                 129
               ],
               "hint": "בשאילתה הראשונה העיר היא העיר של הלקוח, ולכן ה־`ON` מחבר את `cities` ל־`customers`. בשאילתה השנייה העיר היא העיר של המסעדה, ולכן ה־`ON` מחבר את `cities` ל־`restaurants`.",
-              "solution": "SELECT ci.city_name, COUNT(*) AS order_count\nFROM orders AS o\nINNER JOIN customers AS c\n    ON o.customer_id = c.customer_id\nINNER JOIN cities AS ci\n    ON c.city_id = ci.city_id\nGROUP BY ci.city_name\nORDER BY order_count DESC\n\nSELECT DISTINCT ci.city_name\nFROM restaurants AS r\nINNER JOIN cities AS ci\n    ON r.city_id = ci.city_id",
-              "note": "Tel Aviv-Yafo מובילה עם 230. ההפתעה: Kiryat Shmona במקום הרביעי, עם 129 הזמנות, ואין בה אף מסעדה. הלקוחות שם מזמינים ממסעדות בערים אחרות. תשובה טובה מזהה ש־Kiryat Shmona היא מועמדת לבדיקה: יש בה הזמנות של תושבים ואין בה מסעדה שרשומה באפליקציה. אין בנתונים מידע על מסעדות שלא באפליקציה, ולכן לפני החלטה צריך לבדוק גם תחרות וכדאיות. בשאילתה השנייה 11 ערים, ו־Kiryat Shmona לא ביניהן.",
               "fields": [
                 "הזמנות של לקוחות מהעיר המובילה",
                 "הזמנות של לקוחות מ־Kiryat Shmona"
@@ -2638,9 +2514,7 @@ window.COURSE = {
                 "כמה מנות לא הוזמנו אף פעם",
                 "כמה מהן מהמסעדה שמופיעה הכי הרבה ברשימה"
               ],
-              "hint": "כמו בשקף \"למצוא את מה שאין\": `WHERE` על עמודה מהטבלה הימנית עם `IS NULL`.",
-              "solution": "SELECT m.item_id, m.item_name, m.restaurant_id, m.price\nFROM menu_items AS m\nLEFT JOIN order_items AS oi\n    ON oi.item_id = m.item_id\nWHERE oi.order_id IS NULL\nORDER BY m.restaurant_id",
-              "note": "14 מנות. 7 מהן של מסעדה 30, Lev Hamifratz Diner, שנפתחה ב־2026-07-01, יום אחרי סוף הנתונים: כל התפריט שלה עוד לא הוזמן. 7 האחרות מפוזרות בין 6 מסעדות (2, 8, 10, 19, 25 ו־28, שבה שתיים). תשובה טובה מזהה שחצי מהמנות שייכות למסעדה שעוד לא התחילה לעבוד, וממליצה לא למחוק אותן."
+              "hint": "כמו בשקף \"למצוא את מה שאין\": `WHERE` על עמודה מהטבלה הימנית עם `IS NULL`."
             },
             {
               "title": "אחראים רחוקים מהשליחים",
@@ -2652,8 +2526,6 @@ window.COURSE = {
                 11
               ],
               "hint": "ה־`ON` מחבר את `c.supervisor_id`, האחראי של השליח, ל־`s.courier_id`. כך לכל שורה של שליח מתווספות העמודות מהשורה של האחראי שלו, ואפשר להשתמש בפרטים של האחראי, למשל באיזו עיר הוא עובד. אחר כך, ב־`WHERE`, משווים בין `c.city_id` ל־`s.city_id`.",
-              "solution": "SELECT c.courier_id, c.first_name, c.last_name, c.city_id,\n       s.first_name AS supervisor_first_name,\n       s.last_name AS supervisor_last_name,\n       s.city_id AS supervisor_city_id\nFROM couriers AS c\nINNER JOIN couriers AS s\n    ON c.supervisor_id = s.courier_id\nWHERE c.city_id <> s.city_id\n\nSELECT s.first_name, s.last_name, COUNT(*) AS far_couriers\nFROM couriers AS c\nINNER JOIN couriers AS s\n    ON c.supervisor_id = s.courier_id\nWHERE c.city_id <> s.city_id\nGROUP BY s.courier_id, s.first_name, s.last_name",
-              "note": "14 מתוך 22 שליחים, כמעט שני שלישים. Maya Cohen (תל אביב) אחראית על 11 מהם, Dana Levi על 2 ו־Yael Levi על 1. כאן `INNER JOIN` מתאים, כי שליח בלי אחראי לא רלוונטי לשאלה. תשובה טובה מציינת את המספר, את האחוז ואת האחראית עם הכי הרבה שליחים בעיר אחרת, ומסייגת שעיר שונה היא לא בהכרח מרחק גדול.",
               "fields": [
                 "כל השליחים בעיר אחרת",
                 "מתוכם תחת Maya Cohen"
@@ -2666,9 +2538,7 @@ window.COURSE = {
               "explain": "כמה לקוחות יקבלו את הקמפיין, איזה אחוז הם מכל 160 הלקוחות, וכמה מהם לא הזמינו אף פעם. האם לשלוח לשתי הקבוצות את אותה הודעה?",
               "answer": 61,
               "label": "כמה לקוחות",
-              "hint": "1. מה ה־`LEFT JOIN` צריך לחבר: רק הזמנות מ־1.4.2026 ואילך. לכן התנאי על התאריך נכתב ב־`ON`, יחד עם תנאי החיבור: `ON o.customer_id = c.customer_id AND o.order_date >= '20260401'`. לקוח שאין לו אף הזמנה כזו עדיין יופיע בתוצאה, והעמודות של `orders` אצלו יהיו `NULL`.<br>2. איך מוצאים את הלקוחות האלה: ב־`WHERE` משאירים רק שורות שבהן `o.order_id IS NULL`, כמו בשקף \"למצוא את מה שאין\".<br>3. למה לא לשים את התאריך ב־`WHERE`: `WHERE` רץ אחרי ה־`JOIN`. אצל הלקוחות שאנחנו מחפשים `order_date` הוא `NULL`, ולכן התנאי על התאריך מוחק אותם, ומתקבלות 0 שורות.<br>טיפ: הריצו קודם בלי ה־`WHERE` והסתכלו על השורות עם `NULL`. אלה הלקוחות שאתם מחפשים.",
-              "solution": "SELECT c.customer_id, c.first_name, c.last_name\nFROM customers AS c\nLEFT JOIN orders AS o\n    ON o.customer_id = c.customer_id\n    AND o.order_date >= '20260401'\nWHERE o.order_id IS NULL",
-              "note": "61 לקוחות, בערך 38% מהלקוחות. 7 מהם לא הזמינו אף פעם, ו־54 הזמינו בעבר והפסיקו. תשובה טובה מבחינה בין שתי הקבוצות ומציעה לכל אחת הודעה מתאימה. אם התנאי על התאריך נכתב ב־`WHERE`, מתקבלות 0 שורות."
+              "hint": "1. מה ה־`LEFT JOIN` צריך לחבר: רק הזמנות מ־1.4.2026 ואילך. לכן התנאי על התאריך נכתב ב־`ON`, יחד עם תנאי החיבור: `ON o.customer_id = c.customer_id AND o.order_date >= '20260401'`. לקוח שאין לו אף הזמנה כזו עדיין יופיע בתוצאה, והעמודות של `orders` אצלו יהיו `NULL`.<br>2. איך מוצאים את הלקוחות האלה: ב־`WHERE` משאירים רק שורות שבהן `o.order_id IS NULL`, כמו בשקף \"למצוא את מה שאין\".<br>3. למה לא לשים את התאריך ב־`WHERE`: `WHERE` רץ אחרי ה־`JOIN`. אצל הלקוחות שאנחנו מחפשים `order_date` הוא `NULL`, ולכן התנאי על התאריך מוחק אותם, ומתקבלות 0 שורות.<br>טיפ: הריצו קודם בלי ה־`WHERE` והסתכלו על השורות עם `NULL`. אלה הלקוחות שאתם מחפשים."
             }
           ]
         }
@@ -2749,9 +2619,7 @@ window.COURSE = {
               "explain": "כמה לקוחות יקבלו קופון ראשון, ואיזה אחוז הם מ־153 הלקוחות שהזמינו. מה קורה אם שוכחים את התנאי \"הזמינו לפחות פעם אחת\", ולמה זה משנה לשיווק?",
               "answer": 50,
               "label": "כמה לקוחות",
-              "hint": "`IN` לתנאי הראשון, `NOT IN` לשני. האם יש `NULL` ברשימה של `NOT IN`?",
-              "solution": "SELECT customer_id, first_name, last_name\nFROM customers\nWHERE customer_id IN (SELECT customer_id\n                      FROM orders)\n  AND customer_id NOT IN (SELECT customer_id\n                          FROM orders\n                          WHERE coupon_id IS NOT NULL)",
-              "note": "50 לקוחות, כשליש מ־153 הלקוחות שהזמינו. בלי התנאי הראשון מתקבלים 57: נוספים 7 הלקוחות שלא הזמינו אף פעם, וזו קבוצה אחרת עם צורך אחר. `NOT IN` בטוח כאן, כי `customer_id` ב־`orders` לא יכול להיות `NULL`. תשובה טובה מציינת את 50, ומסבירה למה לא לערבב את ה־7 שלא הזמינו אף פעם."
+              "hint": "`IN` לתנאי הראשון, `NOT IN` לשני. האם יש `NULL` ברשימה של `NOT IN`?"
             },
             {
               "title": "מסעדות מעל הממוצע",
@@ -2760,9 +2628,7 @@ window.COURSE = {
               "explain": "מה הממוצע למסעדה, כמה מסעדות מעליו וכמה מתחתיו (מתוך 29 מסעדות עם הזמנות)? האם התווית תהיה מיוחדת מספיק? למה פחות מחצי מהמסעדות נמצאות מעל הממוצע? רמז: הסתכלו על המסעדות הגדולות ביותר.",
               "answer": 11,
               "label": "כמה מסעדות",
-              "hint": "אפשר לחלק תת־שאילתה אחת בתת־שאילתה אחרת. אסור לכתוב `AVG(COUNT(*))`.",
-              "solution": "SELECT restaurant_id, COUNT(*) AS order_count\nFROM orders\nGROUP BY restaurant_id\nHAVING COUNT(*) > (SELECT COUNT(*) FROM orders)\n                 / (SELECT COUNT(DISTINCT restaurant_id) FROM orders)",
-              "note": "הממוצע הוא 1250 חלקי 29, כלומר 43 בחלוקת מספרים שלמים (האמיתי 43.1, וזה לא משנה כאן). 11 מסעדות מעל הממוצע, ו־18 מתחתיו. כמה מסעדות גדולות (16 עם 84, 17 עם 83) מושכות את הממוצע למעלה, ולכן רוב המסעדות מתחתיו. תשובה טובה מציינת שהתווית תינתן למיעוט מהמסעדות, ולכן עשויה לעזור בבחירה, ומסבירה שהממוצע גבוה בגלל כמה מסעדות גדולות."
+              "hint": "אפשר לחלק תת־שאילתה אחת בתת־שאילתה אחרת. אסור לכתוב `AVG(COUNT(*))`."
             },
             {
               "title": "מסעדות עמוסות עם דירוג נמוך",
@@ -2771,9 +2637,7 @@ window.COURSE = {
               "explain": "מה הדירוג הממוצע של החברה, כמה מסעדות נכנסות לתוכנית ומה הדירוג של כל אחת. מה מפתיע ברשימה, אם משווים למסעדות עם הכי הרבה הזמנות?",
               "answer": 4,
               "label": "כמה מסעדות",
-              "hint": "בלי 1.0 גם הממוצע של החברה וגם הממוצעים של המסעדות נחתכים למספר שלם. נסו ותראו כמה מסעדות נעלמות.",
-              "solution": "SELECT r.restaurant_name,\n       AVG(1.0 * rv.rating) AS avg_rating,\n       COUNT(*) AS review_count\nFROM reviews AS rv\nINNER JOIN orders AS o\n    ON rv.order_id = o.order_id\nINNER JOIN restaurants AS r\n    ON o.restaurant_id = r.restaurant_id\nGROUP BY r.restaurant_name\nHAVING COUNT(*) >= 20\n   AND AVG(1.0 * rv.rating) < (SELECT AVG(1.0 * rating)\n                               FROM reviews)",
-              "note": "הדירוג הממוצע של החברה הוא כ־4.30. 4 מסעדות: Masala Express (3.68), Ashdod Sushi (3.96), Netanya Wok (4.04), Port Noodles (4.09). בלי 1.0 הממוצע של החברה נחתך ל־4, והמסעדות ל־3 או 4, ולכן נשארות רק 2 (Masala Express ו־Ashdod Sushi). ההפתעה: Port Noodles היא השנייה בכמות ההזמנות, ו־Ashdod Sushi השלישית. תשובה טובה נותנת את הממוצע ואת ארבע המסעדות, מזהה שחלקן מהעמוסות בחברה, ומנמקת מאיפה להתחיל."
+              "hint": "בלי 1.0 גם הממוצע של החברה וגם הממוצעים של המסעדות נחתכים למספר שלם. נסו ותראו כמה מסעדות נעלמות."
             }
           ]
         }
@@ -2791,5 +2655,87 @@ window.COURSE = {
   ],
   "extrasPage": "",
   "schemaPage": "schema.html",
-  "teacherGuide": ""
+  "teacherGuide": "https://docs.google.com/document/d/11-JKE2-dFMa1Szd40pgbBMAwIdvrsda_/edit?usp=sharing&ouid=117639608113662556741&rtpof=true&sd=true",
+  "summary": {
+    "id": "summary",
+    "kind": "self",
+    "title": "תרגיל מסכם: איך מעלים את הדירוג?",
+    "intro": "מנהלת חוויית הלקוח של FoodRush רוצה להעלות את הדירוג הממוצע של החברה, שעומד היום על 4.30 מתוך 5. חברת המשלוחים לא קובעת את האוכל ואת המחירים של המסעדות, ולכן היא מחפשת דברים שבשליטתה: דמי המשלוח, השליחים, השעות שבהן מתגברים, ואילו מסעדות מופיעות באפליקציה. לפני שהיא מחליטה במה להשקיע, היא מבקשת מכם לבדוק את הנתונים. בסוף תכתבו לה מכתב קצר עם הממצאים וההמלצות.<br>הדירוג נמצא בטבלת `reviews`, ושאר הפרטים בטבלת `orders`. מחברים את שתיהן לפי `order_id`. כל הביקורות הן על הזמנות שנמסרו.",
+    "questions": [
+      {
+        "title": "אפשר להעלות את דמי המשלוח?",
+        "context": "הצוות שוקל להעלות את דמי המשלוח כדי לממן עוד שליחים. החשש הוא שלקוחות שמשלמים יותר על משלוח יהיו פחות מרוצים.",
+        "task": "חברו את `reviews` ו־`orders`. לכל ערך של `delivery_fee` הציגו:<br>1. את מספר הביקורות.<br>2. את הדירוג הממוצע, עם שתי ספרות אחרי הנקודה.<br>3. את זמן המשלוח הממוצע (`delivery_minutes`), עם ספרה אחת אחרי הנקודה.<br>מיינו לפי דמי המשלוח מהנמוך לגבוה.",
+        "explain": "האם לקוחות שמשלמים יותר על משלוח נותנים דירוג נמוך יותר? האם הם מקבלים משלוח מהיר יותר? מה זה אומר על התוכנית להעלות את דמי המשלוח?",
+        "hint": "`rating` הוא `INT`. ממוצע עם נקודה מקבלים עם `AVG(1.0 * r.rating)`, ומעגלים עם `ROUND(..., 2)`.",
+        "fields": [
+          "הדירוג בדמי משלוח 9.90",
+          "הדירוג בדמי משלוח 17.90"
+        ],
+        "answer": [
+          4.24,
+          4.24
+        ],
+        "tolerance": 0.01
+      },
+      {
+        "title": "האם מהירות המשלוח משפיעה?",
+        "task": "חברו את `reviews` ו־`orders`. חלקו את הביקורות לפי `delivery_minutes`:<br>• עד 30 דקות: `Fast`<br>• 31 עד 45 דקות: `Normal`<br>• יותר מ־45 דקות: `Slow`<br>לכל קבוצה הציגו את מספר הביקורות ואת הדירוג הממוצע, עם שתי ספרות אחרי הנקודה.",
+        "explain": "מה ההפרש בדירוג בין הקבוצה המהירה לקבוצה האיטית? השוו אותו להפרשים שמצאתם בשאלה 1. מה משפיע יותר על הדירוג?",
+        "hint": "`CASE` ב־`SELECT`, ואת כל ה־`CASE` כותבים שוב ב־`GROUP BY`, כמו בפרק 13.",
+        "fields": [
+          "Fast",
+          "Normal",
+          "Slow"
+        ],
+        "answer": [
+          4.8,
+          4.21,
+          3.44
+        ],
+        "tolerance": 0.01
+      },
+      {
+        "title": "מתי המשלוחים איטיים?",
+        "context": "אם המשלוחים האיטיים מורידים את הדירוג, צריך לדעת מתי הם קורים, כדי לתגבר שליחים בזמן הנכון.",
+        "task": "מטבלת `orders`, רק הזמנות שנמסרו (`order_status = 'Delivered'`), חלקו לפי `order_time`:<br>• לפני 15:00: `Lunch`<br>• לפני 18:00: `Afternoon`<br>• לפני 22:00: `Evening`<br>• כל השאר: `Late`<br>הריצו שתי שאילתות:<br>1. לכל חלק של היום: מספר המשלוחים וזמן המשלוח הממוצע, עם שתי ספרות אחרי הנקודה.<br>2. אותה חלוקה, רק למשלוחים של יותר מ־45 דקות: כמה משלוחים כאלה יש בכל חלק?",
+        "explain": "איזה חלק מהמשלוחים האיטיים קורה בערב? מתי הייתם מתגברים שליחים?",
+        "hint": "החלוקה זהה לשאלה \"משמרת אחר הצהריים\" בפרק 13. בשאילתה השנייה מוסיפים תנאי ב־`WHERE`.",
+        "fields": [
+          "זמן המשלוח הממוצע בערב",
+          "משלוחים איטיים בערב",
+          "משלוחים איטיים בסך הכול"
+        ],
+        "answer": [
+          37.91,
+          142,
+          177
+        ],
+        "tolerance": 0.01
+      },
+      {
+        "title": "מסעדות עם דירוג נמוך",
+        "context": "השיווק שוקל להוריד מהאפליקציה מסעדות עם דירוג נמוך. לפני שמחליטים, בודקים אם הבעיה במסעדה או במשלוח.",
+        "task": "הריצו שתי שאילתות:<br>1. חברו את `reviews`, `orders` ו־`restaurants`. לכל מסעדה הציגו את שם המסעדה (`restaurant_name`), את זמן ההכנה (`avg_prep_minutes`), את מספר הביקורות, את הדירוג הממוצע עם שתי ספרות אחרי הנקודה, ואת זמן המשלוח הממוצע עם ספרה אחת אחרי הנקודה. הציגו רק מסעדות שיש להן לפחות 10 ביקורות, וגם דירוג ממוצע מתחת ל־4. מיינו מהדירוג הנמוך לגבוה.<br>2. חברו את `orders`, `restaurants` ו־`couriers`. לכל אחת מהמסעדות שמצאתם, הציגו אילו שליחים מביאים ממנה הזמנות (`courier_id`) ובאיזה רכב (`vehicle_type`). השתמשו ב־`DISTINCT`.",
+        "explain": "זמן ההכנה הממוצע של כל המסעדות הוא כ־14 דקות. השוו אליו את המסעדות שמצאתם. האם הייתם מורידים אותן מהאפליקציה? מה החברה יכולה לנסות לפני שהיא מורידה מסעדה?",
+        "hint": "כדי להציג את `avg_prep_minutes`, כותבים אותו גם ב־`GROUP BY`, כמו בפרק 15. התנאי על 10 ביקורות קיים כי ממוצע של מעט ביקורות לא מספיק כדי להחליט, כמו בטענה של מנהל הכספים בפרק 14.",
+        "fields": [
+          "כמה מסעדות בשאילתה הראשונה",
+          "הדירוג הנמוך ביותר",
+          "כמה שליחים שונים מביאים מ־Ashdod Sushi"
+        ],
+        "answer": [
+          2,
+          3.68,
+          1
+        ],
+        "tolerance": 0.01
+      },
+      {
+        "title": "מכתב למנהלת",
+        "noSql": true,
+        "task": "כתבו למנהלת חוויית הלקוח מכתב של עד 150 מילים, שכולל:<br>1. מה בדקתם ומה מצאתם, עם מספרים.<br>2. שתי המלצות מעשיות שנובעות מהממצאים.<br>3. דבר אחד שהנתונים לא מוכיחים, ומה הייתם בודקים כדי לדעת."
+      }
+    ]
+  }
 };
