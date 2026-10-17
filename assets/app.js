@@ -63,7 +63,7 @@
       : `<div class="slides"><div class="placeholder">כאן תופיע המצגת של הפרק</div></div>`;
     $("#app").innerHTML = topbar(`${home} › פרק ${ch.n}`) + `<main class="wrap">
       <h1>פרק ${ch.n}: ${esc(ch.title)}</h1>
-      <h2>ההקניה</h2>${ch.deckPages ? `<p class="deck-pages">שקפים ${esc(ch.deckPages[0])} עד ${esc(ch.deckPages[1])} במצגת</p>` : ""}${slides}
+      <h2>המצגת</h2>${ch.deckPages ? `<p class="deck-pages">שקפים ${esc(ch.deckPages[0])} עד ${esc(ch.deckPages[1])} במצגת</p>` : ""}${slides}
       <h2>${KINDS.lesson}</h2>${list("lesson")}
       <h2>${KINDS.self}</h2>${list("self")}
       ${ch.extras && ch.extras.length && C.extrasPage ? `<h2>${esc(KINDS.extras || "תרגילי רשות")}</h2><p><a href="${C.extrasPage}#ch${ch.n}">${ch.extras.length} תרגילים נוספים לפרק הזה</a></p>` : ""}
